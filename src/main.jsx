@@ -1,5 +1,5 @@
 var React = require("react");
 var ReactDom = require("react-dom");
-var CBM = require("./components/CBM.jsx");
+var Shell = require("./components/Shell.jsx");
 
-ReactDom.render(<CBM/>, document.getElementById("main"));
+ReactDom.render(<Shell/>, document.getElementById("main"));

@@ -9,15 +9,15 @@ var CBM = React.createClass({
         
         var CBMStyle = {
             color: "white",
-            marginTop: 10,
             padding: 10,
-            borderColor: "#DDD",
-            background: "#666"
+            border: "1px solid #000044",
+            background: "#999"
         };
         
         return (
-            <div style= {CBMStyle} className="row panel panel-default col-sm-8">
-                <h2>CBM</h2>
+            <div style= {CBMStyle} className="panel panel-default col-sm-12" >
+                {/* to be replaced with dynamic content */}
+                <h6 style={{color:"#DD3300"}}>CBM</h6>
                 <Promise />
                 <ConceptModel />
                 <Challenge />

@@ -19044,18 +19044,17 @@ var CBM = React.createClass({
 
         var CBMStyle = {
             color: "white",
-            marginTop: 10,
             padding: 10,
-            borderColor: "#DDD",
-            background: "#666"
+            border: "1px solid #000044",
+            background: "#999"
         };
 
         return React.createElement(
             "div",
-            { style: CBMStyle, className: "row panel panel-default col-sm-8" },
+            { style: CBMStyle, className: "panel panel-default col-sm-12" },
             React.createElement(
-                "h2",
-                null,
+                "h6",
+                { style: { color: "#DD3300" } },
                 "CBM"
             ),
             React.createElement(Promise, null),
@@ -19067,7 +19066,7 @@ var CBM = React.createClass({
 
 module.exports = CBM;
 
-},{"./Challenge.jsx":160,"./ConceptModel.jsx":161,"./Promise.jsx":163,"react":158}],160:[function(require,module,exports){
+},{"./Challenge.jsx":160,"./ConceptModel.jsx":161,"./Promise.jsx":165,"react":158}],160:[function(require,module,exports){
 var React = require("react");
 
 var Challenge = React.createClass({
@@ -19174,7 +19173,90 @@ var ConceptPage = React.createClass({
 
 module.exports = ConceptPage;
 
-},{"./VideoPlayer.jsx":164,"react":158}],163:[function(require,module,exports){
+},{"./VideoPlayer.jsx":167,"react":158}],163:[function(require,module,exports){
+var React = require("react");
+var CBM = require("./CBM.jsx");
+
+var Course = React.createClass({
+    displayName: "Course",
+
+
+    render: function () {
+
+        var CourseStyle = {
+            marginTop: 10,
+            padding: 10,
+            background: "#DDD"
+        };
+
+        return React.createElement(
+            "div",
+            { style: CourseStyle, className: "col-sm-8" },
+            React.createElement(
+                "h6",
+                { style: { color: "#DD3300" } },
+                "Course"
+            ),
+            React.createElement(CBM, null)
+        );
+    }
+});
+
+module.exports = Course;
+
+},{"./CBM.jsx":159,"react":158}],164:[function(require,module,exports){
+var React = require("react");
+
+var MainMenuBar = React.createClass({
+    displayName: "MainMenuBar",
+
+
+    render: function () {
+
+        var menuBarStyle = {
+            padding: 10,
+            background: "#654321"
+        };
+
+        return React.createElement(
+            "div",
+            { className: "col-sm-3" },
+            React.createElement(
+                "h6",
+                { style: { color: "#DD3300" } },
+                "Menu Bar"
+            ),
+            React.createElement(
+                "ol",
+                null,
+                React.createElement(
+                    "li",
+                    null,
+                    "My Courses"
+                ),
+                React.createElement(
+                    "li",
+                    null,
+                    "Profile"
+                ),
+                React.createElement(
+                    "li",
+                    null,
+                    "Help"
+                ),
+                React.createElement(
+                    "li",
+                    null,
+                    "Sign Out"
+                )
+            )
+        );
+    }
+});
+
+module.exports = MainMenuBar;
+
+},{"react":158}],165:[function(require,module,exports){
 var React = require("react");
 
 var Promise = React.createClass({
@@ -19203,7 +19285,41 @@ var Promise = React.createClass({
 
 module.exports = Promise;
 
-},{"react":158}],164:[function(require,module,exports){
+},{"react":158}],166:[function(require,module,exports){
+var React = require("react");
+var MainMenuBar = require("./MainMenuBar.jsx");
+var Course = require("./Course.jsx");
+
+var Shell = React.createClass({
+    displayName: "Shell",
+
+
+    render: function () {
+
+        var CourseStyle = {
+            marginTop: 10,
+            padding: 10,
+            border: "1px solid #888",
+            background: "#EFEFEF"
+        };
+
+        return React.createElement(
+            "div",
+            { style: CourseStyle, className: "row col-sm-12" },
+            React.createElement(
+                "h6",
+                { style: { color: "#DD3300" } },
+                "Shell"
+            ),
+            React.createElement(Course, null),
+            React.createElement(MainMenuBar, null)
+        );
+    }
+});
+
+module.exports = Shell;
+
+},{"./Course.jsx":163,"./MainMenuBar.jsx":164,"react":158}],167:[function(require,module,exports){
 var React = require("react");
 
 var VideoPlayer = React.createClass({
@@ -19233,11 +19349,11 @@ var VideoPlayer = React.createClass({
 
 module.exports = VideoPlayer;
 
-},{"react":158}],165:[function(require,module,exports){
+},{"react":158}],168:[function(require,module,exports){
 var React = require("react");
 var ReactDom = require("react-dom");
-var CBM = require("./components/CBM.jsx");
+var Shell = require("./components/Shell.jsx");
 
-ReactDom.render(React.createElement(CBM, null), document.getElementById("main"));
+ReactDom.render(React.createElement(Shell, null), document.getElementById("main"));
 
-},{"./components/CBM.jsx":159,"react":158,"react-dom":2}]},{},[165]);
+},{"./components/Shell.jsx":166,"react":158,"react-dom":2}]},{},[168]);
