@@ -19032,12 +19032,212 @@ module.exports = require('./lib/React');
 
 },{"./lib/React":26}],159:[function(require,module,exports){
 var React = require("react");
+var ConceptModel = require("./ConceptModel.jsx");
+var Challenge = require("./Challenge.jsx");
+var Promise = require("./Promise.jsx");
+
+var CBM = React.createClass({
+    displayName: "CBM",
+
+
+    render: function () {
+
+        var CBMStyle = {
+            color: "white",
+            marginTop: 10,
+            padding: 10,
+            borderColor: "#DDD",
+            background: "#666"
+        };
+
+        return React.createElement(
+            "div",
+            { style: CBMStyle, className: "row panel panel-default col-sm-8" },
+            React.createElement(
+                "h2",
+                null,
+                "CBM"
+            ),
+            React.createElement(Promise, null),
+            React.createElement(ConceptModel, null),
+            React.createElement(Challenge, null)
+        );
+    }
+});
+
+module.exports = CBM;
+
+},{"./Challenge.jsx":160,"./ConceptModel.jsx":161,"./Promise.jsx":163,"react":158}],160:[function(require,module,exports){
+var React = require("react");
+
+var Challenge = React.createClass({
+    displayName: "Challenge",
+
+
+    render: function () {
+
+        var challengeStyle = {
+            padding: 10,
+            background: "#123456"
+        };
+
+        return React.createElement(
+            "div",
+            { style: challengeStyle, className: "text-left col-sm-12" },
+            React.createElement(
+                "h6",
+                { style: { color: "#DD3300" } },
+                "Challenge"
+            ),
+            React.createElement(
+                "ol",
+                null,
+                React.createElement(
+                    "li",
+                    null,
+                    "Download the files."
+                ),
+                React.createElement(
+                    "li",
+                    null,
+                    "Try the challenge. If you get stuck, click the Learn button to review the concepts."
+                ),
+                React.createElement(
+                    "li",
+                    null,
+                    "Send us your work for expert review."
+                )
+            )
+        );
+    }
+});
+
+module.exports = Challenge;
+
+},{"react":158}],161:[function(require,module,exports){
+var React = require("react");
+var ConceptPage = require("./ConceptPage.jsx");
+
+var ConceptModel = React.createClass({
+    displayName: "ConceptModel",
+
+
+    render: function () {
+
+        var conceptModelStyle = {
+            padding: 10,
+            background: "#234567"
+        };
+
+        return React.createElement(
+            "div",
+            { style: conceptModelStyle, className: "col-sm-12" },
+            React.createElement(
+                "h6",
+                { style: { color: "#DD3300" } },
+                "Concept Model"
+            ),
+            React.createElement(ConceptPage, null)
+        );
+    }
+});
+
+module.exports = ConceptModel;
+
+},{"./ConceptPage.jsx":162,"react":158}],162:[function(require,module,exports){
+var React = require("react");
+var VideoPlayer = require("./VideoPlayer.jsx");
+
+var ConceptPage = React.createClass({
+    displayName: "ConceptPage",
+
+
+    render: function () {
+
+        var promiseStyle = {
+            padding: 10,
+            background: "#345678"
+        };
+
+        return React.createElement(
+            "div",
+            { style: promiseStyle, className: "text-left col-sm-12" },
+            React.createElement(
+                "h6",
+                { style: { color: "#DD3300" } },
+                "Concept Page"
+            ),
+            React.createElement(VideoPlayer, null)
+        );
+    }
+});
+
+module.exports = ConceptPage;
+
+},{"./VideoPlayer.jsx":164,"react":158}],163:[function(require,module,exports){
+var React = require("react");
+
+var Promise = React.createClass({
+    displayName: "Promise",
+
+
+    render: function () {
+
+        var promiseStyle = {
+            padding: 10,
+            background: "#345678"
+        };
+
+        return React.createElement(
+            "div",
+            { style: promiseStyle, className: "text-left col-sm-12" },
+            React.createElement(
+                "h6",
+                { style: { color: "#DD3300" } },
+                "Promise"
+            ),
+            "In this challenge, you will write and prioritize user stories, and update a backlog in response to change."
+        );
+    }
+});
+
+module.exports = Promise;
+
+},{"react":158}],164:[function(require,module,exports){
+var React = require("react");
+
+var VideoPlayer = React.createClass({
+    displayName: "VideoPlayer",
+
+
+    render: function () {
+
+        var playerStyle = {
+            padding: 10,
+            background: "white",
+            border: "#5555BB"
+        };
+
+        return React.createElement(
+            "div",
+            { style: playerStyle, className: "col-sm-12" },
+            React.createElement(
+                "h6",
+                { style: { color: "#DD3300" } },
+                "Video Player"
+            ),
+            React.createElement("iframe", { width: "420", height: "315", src: "https://www.youtube.com/embed/qDVtih6Bw-U", frameborder: "0", allowfullscreen: true })
+        );
+    }
+});
+
+module.exports = VideoPlayer;
+
+},{"react":158}],165:[function(require,module,exports){
+var React = require("react");
 var ReactDom = require("react-dom");
+var CBM = require("./components/CBM.jsx");
 
-ReactDom.render(React.createElement(
-  "h4",
-  null,
-  "Nothing Here Yet"
-), document.getElementById("main"));
+ReactDom.render(React.createElement(CBM, null), document.getElementById("main"));
 
-},{"react":158,"react-dom":2}]},{},[159]);
+},{"./components/CBM.jsx":159,"react":158,"react-dom":2}]},{},[165]);

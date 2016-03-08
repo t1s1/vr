@@ -1,4 +1,5 @@
 var React = require("react");
 var ReactDom = require("react-dom");
+var CBM = require("./components/CBM.jsx");
 
-ReactDom.render(<h4>Nothing Here Yet</h4>, document.getElementById("main"));
+ReactDom.render(<CBM/>, document.getElementById("main"));
