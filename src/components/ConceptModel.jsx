@@ -11,7 +11,7 @@ var ConceptModel = React.createClass({
         };
         
         return (
-            <div style= {conceptModelStyle} className="col-sm-12">
+            <div style={conceptModelStyle} className={this.props.show ? "col-sm-12 hidden" : "col-sm-12"}>
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Concept Model</h6>
                 <ConceptPage />

@@ -1,7 +1,7 @@
 var React = require("react");
 
 var Challenge = React.createClass({
-    
+
     render: function () {
         
         var challengeStyle = {
@@ -10,7 +10,7 @@ var Challenge = React.createClass({
         };
         
         return (
-            <div style= {challengeStyle} className="text-left col-sm-12">
+            <div style= {challengeStyle} className={this.props.show ? "col-sm-12 hidden" : "col-sm-12"}>
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Challenge</h6>
                 <ol>
