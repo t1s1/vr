@@ -1,5 +1,6 @@
 var React = require("react");
-var CBM = require("./CBM.jsx");
+var CourseNavigation = require("./CourseNavigation.jsx");
+var Module = require("./Module.jsx");
 
 var Course = React.createClass({
     
@@ -11,11 +12,20 @@ var Course = React.createClass({
             background: "#DDD"
         };
         
+        var modules = [
+            "Intro",
+            "1",
+            "2",
+            "3",
+            "4"
+        ];
+        
         return (
             <div style= {CourseStyle} className="col-sm-8">
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Course</h6>
-                <CBM />
+                <CourseNavigation modules={modules} />
+                <Module />
             </div>
         );
     }

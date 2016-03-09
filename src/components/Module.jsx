@@ -3,7 +3,7 @@ var ConceptModel = require("./ConceptModel.jsx");
 var Challenge = require("./Challenge.jsx");
 var Promise = require("./Promise.jsx");
 
-var CBM = React.createClass({
+var Module = React.createClass({
     
     getInitialState: function () {
         return {visible: false};
@@ -16,7 +16,7 @@ var CBM = React.createClass({
     
     render: function () {
         
-        var CBMStyle = {
+        var moduleStyle = {
             color: "white",
             padding: 10,
             border: "1px solid #000044",
@@ -24,17 +24,18 @@ var CBM = React.createClass({
         };
         
         return (
-            <div style= {CBMStyle} className="panel panel-default col-sm-12" >
+            <div style= {moduleStyle} className="panel panel-default col-sm-12" >
                 {/* to be replaced with dynamic content */}
-                <h6 style={{color:"#DD3300"}}>CBM</h6>
+                <h6 style={{color:"#DD3300"}}>Module</h6>
                 <button style={{color:"#DD3300"}} onClick={this.onClick}>Show/hide</button>
-                <Promise />
-                <ConceptModel show={this.state.visible} />
-                <Challenge show={this.state.visible} />
-
+                <div show={this.state.visible} >
+                    <Promise />
+                    <ConceptModel />
+                    <Challenge />
+                </div>
             </div>
         );
     }
 });
 
-module.exports = CBM;
+module.exports = Module;
