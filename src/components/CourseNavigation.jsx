@@ -9,7 +9,7 @@ var CourseNavigation = React.createClass({
             marginTop: 10,
             padding: 10,
             border: "1px solid #000022",
-            background: "#6789AB"
+            background: "pink"
         };
         
         var createNavItem = function(text, index) {
