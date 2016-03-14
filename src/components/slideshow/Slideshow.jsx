@@ -47,21 +47,26 @@ var actions = {
 } // end actions
 
 var Slideshow = React.createClass({
-  render: function() {
-    return (
-      <div className="slideshow">
-        <Slides data={this.props.data} />
-        <Pagination data={this.props.data} />
-        <Controls />
-      </div>
-    );
-  }
+    
+    
+    render: function() {
+        
+        return (
+            <div className="slideshow">
+                <Slides data={this.props.data} />
+                {/* <Pagination data={this.props.data} /> */}
+                <Controls />
+            </div>
+        );
+    }
 });
 
 var Slides = React.createClass({
     render: function() {
+        console.log("state: "+slideState);
+        
         var slidesNodes = this.props.data.map(function (slideNode, index) {
-            var isActive = this.state.currentSlide === index;
+            var isActive = slideState.currentSlide === index;
             
             return (
                 <Slide active={isActive} key={slideNode.id} imagePath={slideNode.imagePath} imageAlt={slideNode.imageAlt} title={slideNode.title} subtitle={slideNode.subtitle} text={slideNode.text} action={slideNode.action} actionHref={slideNode.actionHref} />
@@ -78,10 +83,11 @@ var Slides = React.createClass({
 
 var Slide = React.createClass({
     render: function() {
-        var classes = React.addons.classSet({
+        var classes = {
             'slide': true,
             'slide--active': this.props.active
-        });
+        };
+        
         return (
             <div className={classes}>
                 <img src={this.props.imagePath} alt={this.props.imageAlt} />
@@ -95,46 +101,48 @@ var Slide = React.createClass({
 });
 
 var Controls = React.createClass({
-  togglePrev: function() {
-    actions.togglePrev();
-  },
-  toggleNext: function() {
-    actions.toggleNext();
-  },
-  render: function() {
-    return (
-      <div className="controls">
-        <div className="toggle toggle--prev" onClick={this.togglePrev}>Prev</div>
-        <div className="toggle toggle--next" onClick={this.toggleNext}>Next</div>
-      </div>
-    );
-  }
+    togglePrev: function() {
+        actions.togglePrev();
+    },
+    toggleNext: function() {
+        actions.toggleNext();
+    },
+    render: function() {
+        return (
+            <div className="controls">
+                <div className="toggle toggle--prev" onClick={this.togglePrev}>Prev</div>
+                <div className="toggle toggle--next" onClick={this.toggleNext}>Next</div>
+            </div>
+        );
+    }
 });
 
 var Pagination = React.createClass({
-  render: function() {
-    var paginationNodes = this.props.data.map(function (paginationNode, index) {
-      return (
-        <Pager id={paginationNode.id} key={paginationNode.id} title={paginationNode.title}  />
-      );
-    });
-    return (
-      <div className="pagination">
-        {paginationNodes}
-      </div>
-    );
-  }
+    render: function() {
+        var paginationNodes = this.props.data.map(function (paginationNode, index) {
+            return (
+                <Pager id={paginationNode.id} key={paginationNode.id} title={paginationNode.title}  />
+            );
+        });
+        
+        return (
+            <div className="pagination">
+                {paginationNodes}
+            </div>
+        );
+    }
 });
 
 var Pager = React.createClass({
-  toggleSlide: function() {
-    actions.toggleSlide(this.props.id);
-  },
-  render: function() {
-    return (
-      <span className="pager" onClick={this.toggleSlide}>{this.props.title}</span>
-    );
-  }
+    toggleSlide: function() {
+        actions.toggleSlide(this.props.id);
+    },
+    
+    render: function() {
+        return (
+            <span className="pager" onClick={this.toggleSlide}>{this.props.title}</span>
+        );
+    }
 });
 
 module.exports = Slideshow;

@@ -16,6 +16,16 @@ var CourseNavigation = React.createClass({
                 text       : "Slide 1 Image Text",
                 action     : "Slide 1 Image Action",
                 actionHref : "href"
+            },
+            {
+                id         : "slide2",
+                imagePath  : "http://placekitten.com/g/400/300",
+                imageAlt   : "Slide 2 Image",
+                title      : "Slide 2",
+                subtitle   : "Slide 2 Image SubTitle",
+                text       : "Slide 2 Image Text",
+                action     : "Slide 2 Image Action",
+                actionHref : "href"
             }
         ];
         
@@ -31,10 +41,11 @@ var CourseNavigation = React.createClass({
         };
         
         return (
+            
             <div style= {CourseNavStyle}>
                 <h6 style={{color:"#DD3300"}}>Course Navigation</h6>
                 {/*<ul className="list-inline">{this.props.modules.map(createNavItem)}</ul>*/}
-                <Slideshow data = {this.modules} />
+                <Slideshow data = {modules} />
             </div>
         );
     }
