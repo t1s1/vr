@@ -17,7 +17,8 @@ var actions = {
         else {
             this.state.currentSlide = next;
         }
-        Slideshow.render
+        
+        Slideshow.render();
     },
     
     togglePrev: function() {
@@ -25,24 +26,25 @@ var actions = {
         var prev = --current;
         
         if (prev < 0) {
-          prev = this.state.data.length - 1;
+          // WE ARE AT BEGINNING
         }
-        state.currentSlide = prev;
-        render(state);
+        else {
+            this.state.currentSlide = prev;
+        }
+        
+        Slideshow.render();
     },
     
     toggleSlide: function(id) {
-        console.log("something worked");
-        var index = state.data.map(function (el) {
-          return (
-            el.id
-          );
+        var index = this.state.data.map(function (el) {
+            return (el.id);
         });
         var currentIndex = index.indexOf(id);
-        state.currentSlide = currentIndex;
-        render(state);
-        }
+        this.state.currentSlide = currentIndex;
+        
+        Slideshow.render();
     }
+} // end actions
 
 var Slideshow = React.createClass({
   render: function() {
@@ -57,37 +59,39 @@ var Slideshow = React.createClass({
 });
 
 var Slides = React.createClass({
-  render: function() {
-    var slidesNodes = this.props.data.map(function (slideNode, index) {
-    var isActive = state.currentSlide === index;
-      return (
-        <Slide active={isActive} key={slideNode.id} imagePath={slideNode.imagePath} imageAlt={slideNode.imageAlt} title={slideNode.title} subtitle={slideNode.subtitle} text={slideNode.text} action={slideNode.action} actionHref={slideNode.actionHref} />
-      );
-    });
-    return (
-      <div className="slides">
-        {slidesNodes}
-      </div>
-    );
-  }
+    render: function() {
+        var slidesNodes = this.props.data.map(function (slideNode, index) {
+            var isActive = this.state.currentSlide === index;
+            
+            return (
+                <Slide active={isActive} key={slideNode.id} imagePath={slideNode.imagePath} imageAlt={slideNode.imageAlt} title={slideNode.title} subtitle={slideNode.subtitle} text={slideNode.text} action={slideNode.action} actionHref={slideNode.actionHref} />
+            );
+        });
+    
+        return (
+            <div className="slides">
+                {slidesNodes}
+            </div>
+        );
+    }
 });
 
 var Slide = React.createClass({
-  render: function() {
-    var classes = React.addons.classSet({
-      'slide': true,
-      'slide--active': this.props.active
-    });
-    return (
-      <div className={classes}>
-        <img src={this.props.imagePath} alt={this.props.imageAlt} />
-        <h2>{this.props.title}</h2>
-        <h3>{this.props.subtitle}</h3>
-        <p>{this.props.text}</p>
-        <a href={this.props.actionHref}>{this.props.action}</a>
-      </div>
-    );
-  }
+    render: function() {
+        var classes = React.addons.classSet({
+            'slide': true,
+            'slide--active': this.props.active
+        });
+        return (
+            <div className={classes}>
+                <img src={this.props.imagePath} alt={this.props.imageAlt} />
+                <h2>{this.props.title}</h2>
+                <h3>{this.props.subtitle}</h3>
+                <p>{this.props.text}</p>
+                <a href={this.props.actionHref}>{this.props.action}</a>
+            </div>
+        );
+    }
 });
 
 var Controls = React.createClass({
