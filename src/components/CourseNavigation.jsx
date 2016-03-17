@@ -1,39 +1,47 @@
 var React = require("react");
-var NavItem = require("./NavItem.jsx");
-var Slideshow = require("./slideshow/Slideshow.jsx");
 
 var CourseNavigation = React.createClass({
+    getInitialState: function() {
+        return {
+            currentSlide: this.props.initialModule,
+            prevEnabled : this.props.initialModule !== 0,
+            nextEnabled : this.props.initialModule !== this.props.modules.length - 1
+        };
+    },
+    
+    togglePrev: function() {
+        var current = this.state.currentSlide;
+        var prev = --current;
+        
+        this.setState({nextEnabled: true});
+        
+        if(this.state.prevEnabled) {
+            if (prev <= 0) {
+              // WE ARE AT BEGINNING, so disable prev button
+              this.setState({prevEnabled: false});
+            }
+
+            this.setState({currentSlide: prev});
+        }
+        
+    },
+    toggleNext: function() {
+        var current = this.state.currentSlide;
+        var next = ++current;
+        
+        this.setState({prevEnabled: true});
+        
+        if(this.state.nextEnabled) {
+            if (next >= this.props.modules.length - 1) {
+                // WE ARE AT END, so disable next button
+                this.setState({nextEnabled: false});
+            }
+
+            this.setState({currentSlide: next});
+        }  
+    },
     
     render: function() {
-        
-        var modules = [
-            {
-                id         : "slide1",
-                imagePath  : "http://mikedempsey.typepad.com/.a/6a00e5532538c48833017ee7131ffa970d-320wi",
-                imageAlt   : "Slide 1 Image",
-                title      : "Slide 1",
-                subtitle   : "Slide 1 Image SubTitle",
-                text       : "Slide 1 Image Text",
-            },
-            {
-                id         : "slide2",
-                imagePath  : "https://s-media-cache-ak0.pinimg.com/736x/bd/cd/8b/bdcd8bda537f8d0f8aaf5c93880d5642.jpg",
-                imageAlt   : "Slide 2 Image",
-                title      : "Slide 2",
-                subtitle   : "Slide 2 Image SubTitle",
-                text       : "Slide 2 Image Text"
-            },
-            {
-                id         : "slide3",
-                imagePath  : "http://www.piccianeri.com/wp-content/uploads/2015/05/God-Save-The-Queen.jpg?c3f98e",
-                imageAlt   : "Slide 3 Image",
-                title      : "Slide 3",
-                subtitle   : "Slide 3 Image SubTitle",
-                text       : "Slide 3 Image Text"
-            }
-        ];
-        
-        
         
         var CourseNavStyle = {
             marginTop: 10,
@@ -42,16 +50,58 @@ var CourseNavigation = React.createClass({
             background: "#6789AB"
         };
         
-        var createNavItem = function(text, index) {
-            return (<NavItem key={index} text={text} />);  
+        return (
+            <div className="slideshow">
+                <Slides data={this.props.modules} currentSlide={this.state.currentSlide} />
+                {/* <Pagination data={this.props.modules} /> */}
+                <div className="controls">
+                    <div className="btn btn-default" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</div>
+                    <div className="btn btn-default" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</div>
+                </div>
+            </div>
+        );
+    }
+});
+
+var Slides = React.createClass({
+    render: function() {
+        var currentSlide = this.props.currentSlide;
+        var slidesNodes = this.props.data.map(function (slideNode, index) {
+            var isActive = currentSlide === index;
+            console.log("currentSlide: "+currentSlide+"   index: "+index);
+            return (
+                <Slide active={isActive} key={slideNode.id} imagePath={slideNode.imagePath} imageAlt={slideNode.imageAlt} title={slideNode.title} subtitle={slideNode.subtitle} text={slideNode.text} />
+            );
+        });
+    
+        return (
+            <div className="slides">
+                {slidesNodes}
+            </div>
+        );
+    }
+});
+
+var Slide = React.createClass({
+    render: function() {
+        var hide = { display: "none" };
+        var show = { display: "block"};
+        
+        var CourseNavStyle = {
+            marginTop: 10,
+            padding: 10,
+            border: "1px solid #000022",
+            background: "#6789AB",
+            display: this.props.active ? "block" : "none"
         };
         
         return (
-            
             <div style= {CourseNavStyle}>
                 <h6 style={{color:"#DD3300"}}>Course Navigation</h6>
-                {/*<ul className="list-inline">{this.props.modules.map(createNavItem)}</ul>*/}
-                <Slideshow modules={modules} initialModule={2}/>
+                <img src={this.props.imagePath} alt={this.props.imageAlt} />
+                <h2>{this.props.title}</h2>
+                <h3>{this.props.subtitle}</h3>
+                <p>{this.props.text}</p>
             </div>
         );
     }
