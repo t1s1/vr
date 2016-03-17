@@ -1,61 +1,60 @@
 var React = require("react");
 
-var slideState = {
-  currentSlide: 0,
-  data        : []
-}
-
-// State transitions
-var actions = {
-    toggleNext: function() {
-        var current = this.state.currentSlide;
-        var next = ++current;
-
-        if (next > this.state.data.length - 1) {
-            // WE ARE AT END
-        }
-        else {
-            this.state.currentSlide = next;
-        }
-        
-        Slideshow.render();
+var Slideshow = React.createClass({
+    getInitialState: function() {
+        return {
+            currentSlide: this.props.initialModule,
+            prevEnabled : this.props.initialModule !== 0,
+            nextEnabled : this.props.initialModule !== this.props.modules.length - 1
+        };
     },
     
     togglePrev: function() {
         var current = this.state.currentSlide;
         var prev = --current;
         
-        if (prev < 0) {
-          // WE ARE AT BEGINNING
-        }
-        else {
-            this.state.currentSlide = prev;
+        console.log("current: "+current+"   prev: "+prev);
+        
+        this.setState({nextEnabled: true});
+        
+        if(this.state.prevEnabled) {
+            if (prev <= 0) {
+              // WE ARE AT BEGINNING, so disable prev button
+              this.setState({prevEnabled: false});
+            }
+    
+            console.log("PREVIOUS <---");
+            this.setState({currentSlide: prev});
         }
         
-        Slideshow.render();
     },
-    
-    toggleSlide: function(id) {
-        var index = this.state.data.map(function (el) {
-            return (el.id);
-        });
-        var currentIndex = index.indexOf(id);
-        this.state.currentSlide = currentIndex;
+    toggleNext: function() {
+        var current = this.state.currentSlide;
+        var next = ++current;
         
-        Slideshow.render();
-    }
-} // end actions
-
-var Slideshow = React.createClass({
-    
+        this.setState({prevEnabled: true});
+        
+        if(this.state.nextEnabled) {
+            if (next >= this.props.modules.length - 1) {
+                // WE ARE AT END, so disable next button
+                this.setState({nextEnabled: false});
+            }
+            
+            console.log("---> NEXT");
+            this.setState({currentSlide: next});
+        }  
+    },
     
     render: function() {
         
         return (
             <div className="slideshow">
-                <Slides data={this.props.data} />
-                {/* <Pagination data={this.props.data} /> */}
-                <Controls />
+                <Slides data={this.props.modules} currentSlide={this.state.currentSlide} />
+                {/* <Pagination data={this.props.modules} /> */}
+                <div className="controls">
+                    <div className="btn btn-default" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</div>
+                    <div className="btn btn-default" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</div>
+                </div>
             </div>
         );
     }
@@ -63,11 +62,10 @@ var Slideshow = React.createClass({
 
 var Slides = React.createClass({
     render: function() {
-        console.log("state: "+slideState);
-        
+        var currentSlide = this.props.currentSlide;
         var slidesNodes = this.props.data.map(function (slideNode, index) {
-            var isActive = slideState.currentSlide === index;
-            
+            var isActive = currentSlide === index;
+            console.log("currentSlide: "+currentSlide+"   index: "+index);
             return (
                 <Slide active={isActive} key={slideNode.id} imagePath={slideNode.imagePath} imageAlt={slideNode.imageAlt} title={slideNode.title} subtitle={slideNode.subtitle} text={slideNode.text} action={slideNode.action} actionHref={slideNode.actionHref} />
             );
@@ -83,35 +81,15 @@ var Slides = React.createClass({
 
 var Slide = React.createClass({
     render: function() {
-        var classes = {
-            'slide': true,
-            'slide--active': this.props.active
-        };
+        var hide = { display: "none" };
+        var show = { display: "block"};
         
         return (
-            <div className={classes}>
+            <div style={this.props.active ? show : hide}>
                 <img src={this.props.imagePath} alt={this.props.imageAlt} />
                 <h2>{this.props.title}</h2>
                 <h3>{this.props.subtitle}</h3>
                 <p>{this.props.text}</p>
-                <a href={this.props.actionHref}>{this.props.action}</a>
-            </div>
-        );
-    }
-});
-
-var Controls = React.createClass({
-    togglePrev: function() {
-        actions.togglePrev();
-    },
-    toggleNext: function() {
-        actions.toggleNext();
-    },
-    render: function() {
-        return (
-            <div className="controls">
-                <div className="toggle toggle--prev" onClick={this.togglePrev}>Prev</div>
-                <div className="toggle toggle--next" onClick={this.toggleNext}>Next</div>
             </div>
         );
     }
@@ -119,7 +97,7 @@ var Controls = React.createClass({
 
 var Pagination = React.createClass({
     render: function() {
-        var paginationNodes = this.props.data.map(function (paginationNode, index) {
+        var paginationNodes = this.props.modules.map(function (paginationNode, index) {
             return (
                 <Pager id={paginationNode.id} key={paginationNode.id} title={paginationNode.title}  />
             );

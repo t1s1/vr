@@ -9,25 +9,31 @@ var CourseNavigation = React.createClass({
         var modules = [
             {
                 id         : "slide1",
-                imagePath  : "http://placekitten.com/g/400/300",
+                imagePath  : "http://mikedempsey.typepad.com/.a/6a00e5532538c48833017ee7131ffa970d-320wi",
                 imageAlt   : "Slide 1 Image",
                 title      : "Slide 1",
                 subtitle   : "Slide 1 Image SubTitle",
                 text       : "Slide 1 Image Text",
-                action     : "Slide 1 Image Action",
-                actionHref : "href"
             },
             {
                 id         : "slide2",
-                imagePath  : "http://placekitten.com/g/400/300",
+                imagePath  : "https://s-media-cache-ak0.pinimg.com/736x/bd/cd/8b/bdcd8bda537f8d0f8aaf5c93880d5642.jpg",
                 imageAlt   : "Slide 2 Image",
                 title      : "Slide 2",
                 subtitle   : "Slide 2 Image SubTitle",
-                text       : "Slide 2 Image Text",
-                action     : "Slide 2 Image Action",
-                actionHref : "href"
+                text       : "Slide 2 Image Text"
+            },
+            {
+                id         : "slide3",
+                imagePath  : "http://www.piccianeri.com/wp-content/uploads/2015/05/God-Save-The-Queen.jpg?c3f98e",
+                imageAlt   : "Slide 3 Image",
+                title      : "Slide 3",
+                subtitle   : "Slide 3 Image SubTitle",
+                text       : "Slide 3 Image Text"
             }
         ];
+        
+        
         
         var CourseNavStyle = {
             marginTop: 10,
@@ -45,7 +51,7 @@ var CourseNavigation = React.createClass({
             <div style= {CourseNavStyle}>
                 <h6 style={{color:"#DD3300"}}>Course Navigation</h6>
                 {/*<ul className="list-inline">{this.props.modules.map(createNavItem)}</ul>*/}
-                <Slideshow data = {modules} />
+                <Slideshow modules={modules} initialModule={2}/>
             </div>
         );
     }
