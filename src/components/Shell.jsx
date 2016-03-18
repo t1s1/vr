@@ -17,6 +17,7 @@ var Shell = React.createClass({
             <div style= {CourseStyle} className="row col-sm-12">
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Shell</h6>
+                {this.props.derp[0]}
                 <Course />
                 <MainMenuBar />
             </div>
