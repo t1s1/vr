@@ -1,7 +1,6 @@
 var React = require("react");
 var CourseNavigation = require("./CourseNavigation.jsx");
 var Module = require("./Module.jsx");
-
 var Course = React.createClass({
     
     render: function () {
@@ -23,12 +22,11 @@ var Course = React.createClass({
         return (
             <div style= {CourseStyle} className="col-sm-8">
                 {/* to be replaced with dynamic content */}
-                <h6 style={{color:"#DD3300"}}>json.IA.CoverPage[0].Title</h6>
+                <h6 style={{color:"#DD3300"}}>Course</h6>
                 <CourseNavigation modules={modules} />
                 <Module />
             </div>
         );
     }
 });
-
 module.exports = Course;
