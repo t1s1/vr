@@ -44,6 +44,15 @@ var ModuleNavigator = React.createClass({
     
     render: function() {
         
+        var currentModule = this.state.currentModule;
+        var ModuleNodes = this.props.modules.map(function (ModuleNode, index) {
+            var isActive = currentModule === index;
+
+            return (
+                <ModuleContainer active={isActive} key={ModuleNode.id} title={ModuleNode.title} subtitle={ModuleNode.subtitle} text={ModuleNode.text} />
+            );
+        });
+        
         var moduleNavStyle = {
             marginTop: 10,
             padding: 10,
@@ -52,30 +61,11 @@ var ModuleNavigator = React.createClass({
         };
         
         return (
-            <div  style= {moduleNavStyle}>
+            <div style= {moduleNavStyle} className="col-sm-12">
                 <div className="controls">
                     <div className="btn btn-default" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</div>
                     <div className="btn btn-default" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</div>
                 </div>
-                <Modules data={this.props.modules} currentModule={this.state.currentModule} />
-            </div>
-        );
-    }
-});
-
-var Modules = React.createClass({
-    render: function() {
-        var currentModule = this.props.currentModule;
-        var ModuleNodes = this.props.data.map(function (ModuleNode, index) {
-            var isActive = currentModule === index;
-
-            return (
-                <ModuleContainer active={isActive} key={ModuleNode.id} title={ModuleNode.title} subtitle={ModuleNode.subtitle} text={ModuleNode.text} />
-            );
-        });
-    
-        return (
-            <div className="col-sm-12">
                 {ModuleNodes}
             </div>
         );
