@@ -10,7 +10,6 @@ var Module = React.createClass({
     },
     
     onClick: function () {
-        console.log(this.state.visible);
         this.setState({visible: !this.state.visible});
     },
     
