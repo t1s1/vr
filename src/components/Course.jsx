@@ -1,10 +1,15 @@
 var React = require("react");
+<<<<<<< HEAD
 var ModuleNavigator = require("./ModuleNavigator.jsx");
 
+=======
+var CourseNavigation = require("./CourseNavigation.jsx");
+var Module = require("./Module.jsx");
+>>>>>>> dc98fbe87774a001f75625cbd1e766b3524c5278
 var Course = React.createClass({
     
     render: function () {
-        
+      
         var CourseStyle = {
             marginTop: 10,
             padding: 10,
@@ -41,5 +46,4 @@ var Course = React.createClass({
         );
     }
 });
-
 module.exports = Course;
