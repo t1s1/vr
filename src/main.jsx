@@ -9,7 +9,4 @@ json_dump = data;
     ReactDom.render(<Shell data={json_dump.IA}/>, document.getElementById("main"))});
     
 
-<<<<<<< HEAD
-ReactDom.render(<Shell />, document.getElementById("main"));
-=======
->>>>>>> ajax-in-main
+
