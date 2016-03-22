@@ -16,7 +16,7 @@ var Course = React.createClass({
             <div style= {CourseStyle} className="col-sm-8">
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Course</h6>
-                <ModuleNavigator modules={this.props.modulesDat} initialModule={0}/>
+                <ModuleNavigator modules={this.props.modulesData} initialModule={0}/>
             </div>
         );
     }
