@@ -1,11 +1,10 @@
 var React = require("react");
 var CourseNavigation = require("./CourseNavigation.jsx");
 var Module = require("./Module.jsx");
-
 var Course = React.createClass({
     
     render: function () {
-        
+      
         var CourseStyle = {
             marginTop: 10,
             padding: 10,
@@ -49,5 +48,4 @@ var Course = React.createClass({
         );
     }
 });
-
 module.exports = Course;
