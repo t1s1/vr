@@ -45,11 +45,11 @@ var ModuleNavigator = React.createClass({
     render: function() {
         
         var currentModule = this.state.currentModule;
-        var ModuleNodes = this.props.modules.map(function (ModuleNode, index) {
+        
+        var ModuleNodes = this.props.modules.map(function (moduleNode, index) {
             var isActive = currentModule === index;
-
             return (
-                <ModuleContainer active={isActive} key={ModuleNode.id} title={ModuleNode.title} subtitle={ModuleNode.subtitle} text={ModuleNode.text} />
+                <ModuleContainer active={isActive} title={moduleNode.Title} subtitle={moduleNode.SubTitle} text={moduleNode.text} />
             );
         });
         
@@ -57,7 +57,7 @@ var ModuleNavigator = React.createClass({
             marginTop: 10,
             padding: 10,
             border: "1px solid #000022",
-            background: "pink"
+            background: "#6789AB"
         };
         
         return (
@@ -89,7 +89,7 @@ var ModuleContainer = React.createClass({
             <div style= {moduleContainerStyle} className="col-sm-12">
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#000"}}>Module Container</h6>
-                <Module title={this.props.title}/>
+                <Module title={this.props.title} subtitle={this.props.subtitle} />
             </div>
         );
     }
