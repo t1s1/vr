@@ -48,8 +48,10 @@ var ModuleNavigator = React.createClass({
         
         var ModuleNodes = this.props.modules.map(function (moduleNode, index) {
             var isActive = currentModule === index;
+            var genKey = "KEY_"+index;
+
             return (
-                <ModuleContainer active={isActive} title={moduleNode.Title} subtitle={moduleNode.SubTitle} text={moduleNode.text} />
+                <ModuleContainer active={isActive} key={genKey} title={moduleNode.Title} subtitle={moduleNode.SubTitle} text={moduleNode.text} />
             );
         });
         

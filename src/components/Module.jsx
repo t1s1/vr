@@ -23,15 +23,13 @@ var Module = React.createClass({
         };
         
         return (
-            <div style= {moduleStyle} className="panel panel-default col-sm-12" >
+            <div style={moduleStyle} className="panel panel-default col-sm-12" >
                 {/* to be replaced with dynamic content */}
-                <h6 style={{color:"#000"}}>Module: {this.props.title}</h6>
-                <button style={{color:"#DD3300"}} onClick={this.onClick}>Show/hide</button>
-                <div show={this.state.visible} >
-                    <Promise />
-                    <ConceptModel />
-                    <Challenge />
-                </div>
+                <h4>{this.props.title}</h4>
+                <p>{this.props.subtitle}</p>
+                <Promise />
+                <ConceptModel />
+                <Challenge />
             </div>
         );
     }
