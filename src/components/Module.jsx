@@ -10,7 +10,6 @@ var Module = React.createClass({
     },
     
     onClick: function () {
-        console.log(this.state.visible);
         this.setState({visible: !this.state.visible});
     },
     
@@ -24,8 +23,9 @@ var Module = React.createClass({
         };
         
         return (
-            <div style= {moduleStyle} className="panel panel-default col-sm-12" >
+            <div style={moduleStyle} className="panel panel-default col-sm-12" >
                 {/* to be replaced with dynamic content */}
+<<<<<<< HEAD
                 <h6 style={{color:"#DD3300"}}>Module</h6>
                 <h6>{this.props.Title}</h6>
                 <button style={{color:"#DD3300"}} onClick={this.onClick}>Show/hide</button>
@@ -34,6 +34,13 @@ var Module = React.createClass({
                     <ConceptModel />
                     <Challenge />
                 </div>
+=======
+                <h4>{this.props.title}</h4>
+                <p>{this.props.subtitle}</p>
+                <Promise />
+                <ConceptModel />
+                <Challenge />
+>>>>>>> c0755cf0d0e95ad20c3b41315c9a5fa175747029
             </div>
         );
     }

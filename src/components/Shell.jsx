@@ -7,7 +7,7 @@ var Shell = React.createClass({
     render: function () {
             return (
             <div className="col-sm-12">
-                <Course CourseData={this.props.data.CoverPage[0]} ModulesData={this.props.data.Lessons[0]} />
+                <Course courseData={this.props.data.CoverPage[0]} modulesData={this.props.data.Lessons[0].Lesson} />
                 <MainMenuBar /> {/*the data for this component does not come from the course content json*/}
             </div>
         );
