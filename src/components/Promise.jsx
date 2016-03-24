@@ -3,7 +3,7 @@ var React = require("react");
 var Promise = React.createClass({
     
     render: function () {
-        
+        console.log("this is data passed to promise comp: " + this.props.data);
         var promiseStyle = {
             padding: 10,
             background: "#345678"
@@ -12,8 +12,8 @@ var Promise = React.createClass({
         return (
             <div style= {promiseStyle} className="text-left col-sm-12">
                 {/* to be replaced with dynamic content */}
-                <h6 style={{color:"#DD3300"}}>Promise</h6>
-                In this challenge, you will write and prioritize user stories, and update a backlog in response to change.
+                <h6 style={{color:"#DD3300"}}>module title: {this.props.data.Lesson[0].Title}</h6>
+                <p>Promise: {this.props.data.Lesson[1].SubTitle}</p>
             </div>
         );
     }

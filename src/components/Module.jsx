@@ -15,7 +15,7 @@ var Module = React.createClass({
     },
     
     render: function () {
-        
+        console.log(this.props.data);
         var moduleStyle = {
             color: "white",
             padding: 10,
@@ -27,10 +27,10 @@ var Module = React.createClass({
             <div style= {moduleStyle} className="panel panel-default col-sm-12" >
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Module</h6>
-                <h6>{this.props.stuff}</h6>
+                <h6>{this.props.Title}</h6>
                 <button style={{color:"#DD3300"}} onClick={this.onClick}>Show/hide</button>
                 <div show={this.state.visible} >
-                    <Promise />
+                    <Promise data={this.props.data} />
                     <ConceptModel />
                     <Challenge />
                 </div>

@@ -4,7 +4,7 @@ var Module = require("./Module.jsx");
 var Course = React.createClass({
     
     render: function () {
-      
+        console.log(this.props.ModulesData);
         var CourseStyle = {
             marginTop: 10,
             padding: 10,
@@ -43,7 +43,7 @@ var Course = React.createClass({
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Course</h6>
                 <CourseNavigation modules={modules}  initialModule={2}/>
-                <Module />
+                <Module data={this.props.ModulesData} />
             </div>
         );
     }
