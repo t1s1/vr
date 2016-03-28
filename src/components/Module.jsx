@@ -1,5 +1,5 @@
 var React = require("react");
-var ConceptModel = require("./ConceptModel.jsx");
+var ConceptNavigator = require("./ConceptNavigator.jsx");
 var Challenge = require("./Challenge.jsx");
 var Promise = require("./Promise.jsx");
 
@@ -25,10 +25,12 @@ var Module = React.createClass({
         return (
             <div style={moduleStyle} className="panel panel-default col-sm-12" >
                 {/* to be replaced with dynamic content */}
-                <h4>{this.props.title}</h4>
-                <p>{this.props.subtitle}</p>
-                <Promise />
-                <ConceptModel />
+                <h4>Module Title - {this.props.title}</h4>
+                <p>Promise - {this.props.subtitle}</p>
+                {/*May not need Promise component. This Promise info is in the ModuleNavigator componenet.
+                <Promise />*/}
+                
+                <ConceptNavigator concepts={this.props.conceptsData} initialConcept={0}/> {/*initialConcept won't always be 0; user may want to pick up where they left off*/}
                 <Challenge />
             </div>
         );

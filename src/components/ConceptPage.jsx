@@ -7,14 +7,14 @@ var ConceptPage = React.createClass({
         
         var promiseStyle = {
             padding: 10,
-            background: "#345678"
+            background: "purple"
         };
         
         return (
             <div style= {promiseStyle} className="text-left col-sm-12">
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Concept Page</h6>
-                {/* <VideoPlayer /> */}
+                <p>{this.props.title}</p>{/* <VideoPlayer /> */}
             </div>
         );
     }

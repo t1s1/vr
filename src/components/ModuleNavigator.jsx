@@ -3,6 +3,7 @@ var Module = require("./Module.jsx");
 
 var ModuleNavigator = React.createClass({
     getInitialState: function() {
+       console.log(this.props.modules.length);
         return {
             currentModule: this.props.initialModule,
             prevEnabled  : this.props.initialModule !== 0,
@@ -24,8 +25,8 @@ var ModuleNavigator = React.createClass({
 
             this.setState({currentModule: prev});
         }
-        
-    },
+      },
+      
     toggleNext: function() {
         var current = this.state.currentModule;
         var next = ++current;
@@ -43,15 +44,14 @@ var ModuleNavigator = React.createClass({
     },
     
     render: function() {
-        
         var currentModule = this.state.currentModule;
         
-        var ModuleNodes = this.props.modules.map(function (moduleNode, index) {
+        var ModuleNodes = this.props.modules.map(function (moduleNode, index) { //need to look at moduleNode
             var isActive = currentModule === index;
             var genKey = moduleNode["$"]["xy:guid"];
 
             return (
-                <ModuleContainer active={isActive} key={genKey} title={moduleNode.Title} subtitle={moduleNode.SubTitle} text={moduleNode.text} />
+                <ModuleContainer active={isActive} key={genKey} title={moduleNode.Title} subtitle={moduleNode.SubTitle} data ={moduleNode} text={moduleNode.text} />
             );
         });
         
@@ -76,8 +76,6 @@ var ModuleNavigator = React.createClass({
 
 var ModuleContainer = React.createClass({
     render: function() {
-        var hide = { display: "none" };
-        var show = { display: "block"};
         
         var moduleContainerStyle = {
             marginTop: 10,
@@ -90,8 +88,8 @@ var ModuleContainer = React.createClass({
         return (
             <div style= {moduleContainerStyle} className="col-sm-12">
                 {/* to be replaced with dynamic content */}
-                <h6 style={{color:"#000"}}>Module Container</h6>
-                <Module title={this.props.title} subtitle={this.props.subtitle} />
+                <h6 style={{color:"#000"}}>Module Navigator</h6>
+                <Module title={this.props.title} subtitle={this.props.subtitle} conceptsData={this.props.data} /> {/*add here*/}
             </div>
         );
     }
