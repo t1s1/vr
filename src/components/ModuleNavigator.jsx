@@ -45,7 +45,7 @@ var ModuleNavigator = React.createClass({
     render: function() {
         var currentModule = this.state.currentModule;
         
-        var ModuleNodes = this.props.modules.map(function (moduleNode, index) { //need to look at moduleNode
+        var ModuleNodes = this.props.modules.map(function (moduleNode, index) { 
             var isActive = currentModule === index;
             var genKey = moduleNode["$"]["xy:guid"];
 
@@ -88,7 +88,7 @@ var ModuleContainer = React.createClass({
             <div style= {moduleContainerStyle} className="col-sm-12">
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#000"}}>Module Navigator</h6>
-                <Module title={this.props.title} subtitle={this.props.subtitle} conceptsData={this.props.data} /> {/*add here*/}
+                <Module title={this.props.title} subtitle={this.props.subtitle} data={this.props.data} /> {/*add here*/}
             </div>
         );
     }

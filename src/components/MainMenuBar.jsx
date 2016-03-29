@@ -10,7 +10,7 @@ var MainMenuBar = React.createClass({
         };
         
         return (
-            <div className="col-sm-3">
+            <div className="col-sm-12">
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Menu Bar</h6>
                 <ol>

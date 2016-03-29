@@ -13,8 +13,9 @@ var ConceptPage = React.createClass({
             <div style= {promiseStyle} className="text-left col-sm-12">
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Concept Page</h6>
-                <h6>{this.props.title}</h6>
-                <Concept data={this.props.data}/>
+                <h3>{this.props.title}</h3>
+                <Concept data={this.props.data} title={this.props.data.Title}/>
+                
                 {/* <VideoPlayer /> */}
             </div>
         );

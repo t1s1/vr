@@ -24,16 +24,15 @@ var Module = React.createClass({
         return (
             <div style={moduleStyle} className="panel panel-default col-sm-12" >
                 {/* to be replaced with dynamic content */}
-                <h4>Module Title - {this.props.title}</h4>
-                <p>Invitation - {this.props.conceptsData.Topic[0].ParaBlock[0].RichText}</p> 
+                <h3>Module Title - {this.props.title}</h3>
+                <p>Invitation - {this.props.data.Topic[0].ParaBlock[0].RichText}</p> 
                 <p>Promise - {this.props.subtitle}</p>
-                <img src={this.props.conceptsData.Topic[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
-                {/*<img src="smiley.gif" alt="Smiley face" height="42" width="42">*/}
+                <img src={this.props.data.Topic[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
                 {/*May not need Promise component. This Promise info is in the ModuleNavigator componenet.
                 <Promise />*/}
                 
-                <ConceptNavigator concepts={this.props.conceptsData.Topic} initialConcept={0}/> {/*initialConcept won't always be 0; user may want to pick up where they left off*/}
-                <Challenge />
+                <ConceptNavigator concepts={this.props.data.Topic} initialConcept={0}/> {/*initialConcept won't always be 0; user may want to pick up where they left off*/}
+                <Challenge data={this.props.data} />
             </div>
         );
     }
