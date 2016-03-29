@@ -3,7 +3,6 @@ var Module = require("./Module.jsx");
 
 var ModuleNavigator = React.createClass({
     getInitialState: function() {
-       console.log(this.props.modules.length);
         return {
             currentModule: this.props.initialModule,
             prevEnabled  : this.props.initialModule !== 0,

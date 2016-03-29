@@ -14,7 +14,6 @@ var Module = React.createClass({
     },
     
     render: function () {
-        
         var moduleStyle = {
             color: "white",
             padding: 10,
@@ -26,11 +25,14 @@ var Module = React.createClass({
             <div style={moduleStyle} className="panel panel-default col-sm-12" >
                 {/* to be replaced with dynamic content */}
                 <h4>Module Title - {this.props.title}</h4>
+                <p>Invitation - {this.props.conceptsData.Topic[0].ParaBlock[0].RichText}</p> 
                 <p>Promise - {this.props.subtitle}</p>
+                <img src={this.props.conceptsData.Topic[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
+                {/*<img src="smiley.gif" alt="Smiley face" height="42" width="42">*/}
                 {/*May not need Promise component. This Promise info is in the ModuleNavigator componenet.
                 <Promise />*/}
                 
-                <ConceptNavigator concepts={this.props.conceptsData} initialConcept={0}/> {/*initialConcept won't always be 0; user may want to pick up where they left off*/}
+                <ConceptNavigator concepts={this.props.conceptsData.Topic} initialConcept={0}/> {/*initialConcept won't always be 0; user may want to pick up where they left off*/}
                 <Challenge />
             </div>
         );

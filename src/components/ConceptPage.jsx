@@ -1,6 +1,5 @@
 var React = require("react");
-var VideoPlayer = require("./VideoPlayer.jsx");
-
+var Concept = require("./Concept.jsx");
 var ConceptPage = React.createClass({
     
     render: function () {
@@ -14,7 +13,9 @@ var ConceptPage = React.createClass({
             <div style= {promiseStyle} className="text-left col-sm-12">
                 {/* to be replaced with dynamic content */}
                 <h6 style={{color:"#DD3300"}}>Concept Page</h6>
-                <p>{this.props.title}</p>{/* <VideoPlayer /> */}
+                <h6>{this.props.title}</h6>
+                <Concept data={this.props.data}/>
+                {/* <VideoPlayer /> */}
             </div>
         );
     }
