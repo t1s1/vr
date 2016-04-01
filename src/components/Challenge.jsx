@@ -11,7 +11,6 @@ var Challenge = React.createClass({
      
         var componentpack = [];
         if (this.props.data.hasOwnProperty("ContentGroup")) {
-              // console.log(this.props.data.ContentGroup[0].Topic[0].Topic[0].ParaBlock[0].List[0].ItemBlock[0].Item[0].ItemPara);
             componentpack.push(<ChallengeIntro data={this.props.data.ContentGroup[0].Topic[0]} />);
             componentpack.push(<ChallengeInstructions data={this.props.data.ContentGroup[0].Topic[0]} />);
         }
@@ -54,11 +53,3 @@ var ChallengeInstructions = React.createClass({
     }
 });
 module.exports = Challenge;
-
-/*  console.log(this.props.data.Topic[0].ParaBlock[0].List[0].ItemBlock[0].Item[2].ItemPara[0]);
-        var i = i++;
-        var steps = this.props.data.Topic[0].ParaBlock[0].List[0].ItemBlock[0].Item;
-        var stepsarr = [];
-        steps.map(function(step) {
-        stepsarr.push(step.ItemPara[0]);
-        });*/

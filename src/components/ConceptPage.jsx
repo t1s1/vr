@@ -15,7 +15,6 @@ var ConceptPage = React.createClass({
                 <h6 style={{color:"#DD3300"}}>Concept Page</h6>
                 <h3>{this.props.title}</h3>
                 <Concept data={this.props.data} title={this.props.data.Title}/>
-                
                 {/* <VideoPlayer /> */}
             </div>
         );

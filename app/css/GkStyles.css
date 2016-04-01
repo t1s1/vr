@@ -23,3 +23,24 @@ h5{
     color:#FFFFF0;
 }
 
+/*Styles of the Practice component for matching activity. Couldn't figure out how to do this easily in the component*/
+
+.card {
+        background-color: orange;
+        height: 50px;
+        width: 100px;
+        margin: 5px;
+    }
+    .match {
+        background-color: blue;
+        color: white;
+    }
+    
+   [data-clicked="yes"] {
+        border: 2px red solid;
+    }
+    
+    [data-clicked="done"] {
+        background-color: gray;
+    }
+    
