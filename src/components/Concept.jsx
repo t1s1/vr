@@ -98,39 +98,49 @@ var Text = React.createClass({
               )}
 });
 
-//This component only works with Matching Activities. It's a "hot mess". Distractors are randomized.  
+//This component only works with 1-to-1 Matching Activities. It's a "hot mess". Distractors are randomized.  
 var Practice = React.createClass({
      render: function () {
 var clicked;
 var matchers=($( ".matcher" ));
 var match=($(".match"));
 
-matchers.click(function(event) {
-$.each(matchers, function(index, val) {
-  if ($(this).attr("data-clicked") !== "done") {
-    $(this).attr("data-clicked", "no");
-  }
-});
+matchers.click(function() {
+
+if ($(this).attr("data-clicked") !== "done") {
+
+$.each(matchers, function() {
+ if ($(this).attr("data-clicked") !== "done") {
+ $(this).attr("data-clicked", "no");
+ }
+  });
+
 $(this).attr("data-clicked", "yes");
 clicked = $(this);
 
+}
+
 });
 
-match.click(function(event) {
+match.click(function() {
+if ($(this).attr("data-clicked") !== "done") {
+
 $.each(match, function(index, val) {
   if ($(this).attr("data-clicked") !== "done") {
     $(this).attr("data-clicked", "no");
   }
 });
+
 $(this).attr("data-clicked","yes");
 if (clicked.attr("data-num") == $(this).attr("data-num")) {
-  $( ".feedback" ).replaceWith( "<p>This is feedback for the CORRECT answer</p>" );
+  alert("Correct!");
   $(this).attr("data-clicked", "done");
   clicked.attr("data-clicked", "done");
       }
 else {
-    $( ".feedback" ).replaceWith( "<p>This is feedback for the WRONG answer</p>" );
-}      
+    alert("WRONG!");
+}  
+}
 });
          var practice = this.props.practice;
          var choices = practice.Option;
@@ -141,7 +151,7 @@ else {
          var Shuffle = function (o) {
      	 for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 	     return o;
-        }
+        };
          
        $.each(choices, function(index, value) {
           if (value.Distractor) {
@@ -151,31 +161,30 @@ else {
               matcharray.push(this.Match[0].RichText);
           }
        } );
-        distractorarray.map(function(dist) {
-        randomarray.push(<div data-num={dist.id} data-clicked="no" className="card matcher">{dist}</div>);
+        distractorarray.map(function(dist, index) {
+        randomarray.push(<div data-num={index} data-clicked="no" className="card matcher">{dist}</div>);
         });
         Shuffle(randomarray);
 	    
         return (
-        <div className="col-sm-12">
+        <div>
         <p>{practice.QuestionStem[0].RichText}</p>
         <div>
         {
        randomarray.map(function(dist) {
-        console.log(dist);
         return dist;
         })
         }
         </div>
         <div>
                {
-               matcharray.map(function(mat) {
-               return <div data-num={mat.id} data-clicked="no" className="card match">{mat}</div>;
+               matcharray.map(function(mat, index) {
+               return <div data-num={index} data-clicked="no" className="card match">{mat}</div>;
         })
                    
                }
         </div>
-        <div className="feedback"></div>
+      
         </div>);
      }});
          
