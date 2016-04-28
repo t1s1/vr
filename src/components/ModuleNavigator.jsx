@@ -55,20 +55,40 @@ var ModuleNavigator = React.createClass({
         });
         
         var moduleNavStyle = {
-            marginTop: 10,
-            padding: 10,
-            border: "1px solid #000022",
-            background: "#6789AB"
+            
+           
+            background: "none"
+        };
+        
+        
+        var challengeButton = {
+            
+            background: "none",
+            padding: "12px 22px",
+            border: "2px solid #E6E7E8",
+            color: "#CCCCCC",
+            margin: "0px 0px 20px 15px",
+            borderRadius: "0",
+            fontFamily: "Century Gothic, sans-serif",
+            fontWeight: "bold",
+            fontSize: "18px",
+            marginTop: "20px",
+            display:"inline-block" //unhide this when want to see front page
+            
         };
         
         return (
-            <div style= {moduleNavStyle} className="col-sm-12">
-                <div className="controls">
-                    <div className="btn btn-default" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</div>
-                    <div className="btn btn-default" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</div>
+            <div className="row">
+                <div style= {moduleNavStyle} className="col-lg-12 noPad">
+                     {ModuleNodes}
+                    <div className="controls pull-right control-wrapper">
+                        
+                        <button style = {challengeButton} type="button" className="btn btn-primary" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</button>
+                        <button style = {challengeButton} type="button" className="btn btn-primary" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</button>
+                    </div>
+                   
                 </div>
-                {ModuleNodes}
-            </div>
+            </div>//end of outer-row
         );
     }
 });
@@ -77,19 +97,16 @@ var ModuleContainer = React.createClass({
     render: function() {
         
         var moduleContainerStyle = {
-            marginTop: 10,
-            padding: 10,
-            border: "1px solid #000022",
-            background: "#BA9876",
+          
             display: this.props.active ? "block" : "none"
         };
         
         return (
-            <div style= {moduleContainerStyle} className="col-sm-12">
+            <div style= {moduleContainerStyle} className="col-lg-12">
                 {/* to be replaced with dynamic content */}
-                <h6 style={{color:"#000"}}>Module Navigator</h6>
+                
                 <Module title={this.props.title} subtitle={this.props.subtitle} data={this.props.data} /> {/*add here*/}
-            </div>
+            </div>//end of MODULE CONTAINER
         );
     }
 });

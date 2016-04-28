@@ -3,9 +3,11 @@ var Concept = React.createClass({
     
     render: function () {
         var conceptStyle = {
-            padding: 10,
-            background: "gray",
-            border: "#5555BB"
+            padding: 0,
+            background: "#fff",
+            border: "none",
+            width:"100%"
+            
           };
         
        
@@ -56,8 +58,11 @@ var Concept = React.createClass({
         
        
         return (
-        <div style= {conceptStyle} className="col-sm-12">
-            {componentpack}
+        <div class ="row">
+            <div style= {conceptStyle} className="col-md-12 noPad">
+               
+                {componentpack}
+            </div>
         </div>
         );
     }
@@ -76,17 +81,45 @@ var Image = React.createClass({
 var Video = React.createClass({
       render: function () {
         var playerStyle = {
-            padding: 10,
-            background: "red",
-            border: "#5555BB"
+            border: "none",
+            width:"100%",
+            display:"block",
+            position:"relative",
+            
+            
         };
+        
+        var challengeTextPrimer = {
+            fontFamily: "Century Gothic, sans-serif",
+            fontSize: "14px",
+            letterSpacing: "0.2px",
+            color:"#fff", 
+            opacity: "0.69", 
+            filter: "alpha(opacity=69)",
+            progid:"DXImageTransform.Microsoft.Alpha(opacity=69)",
+            paddingLeft:"20px",
+            paddingTop:"20px"
+          
+            
+        };
+        
+       
 
         return (
-            <div style= {playerStyle} className="col-sm-12">
-                {/* to be replaced with dynamic content */}
-                <h6 style={{color:"#DD3300"}}>Video Player</h6>
-                <iframe width="420" height="315" src={this.props.video} frameborder="0" allowfullscreen></iframe>
+            <div className="container noPad">
+                <div className="row">
+                    <div style={playerStyle} className="col-lg-12">
+                        {/* to be replaced with dynamic content */}
+                        {/*<h6 style={{color:"#fff"}}>Video Player</h6>*/}
+                
+                      
+                        <iframe className="embed-responsive-item" width="100%" height="500" src={this.props.video} frameborder="0" allowfullscreen></iframe>
+                      
+                          
+                        </div>
+                    </div>
             </div>
+            
         );
     }
 });
@@ -94,7 +127,14 @@ var Video = React.createClass({
 var Text = React.createClass({
      render: function () {
     return (
-     <p>{this.props.text}</p>
+    <div className="container noPad">
+        <div className="row">
+            <div className="col-md-12">
+              <span style={{paddingTop:"10px", paddingBottom:"10px", paddingLeft:"10px", background:"#0FC6F7", display:"block", color:"#fff", fontFamily:"Century Gothic, sans-serif"}}>{this.props.text}</span>
+                
+            </div>
+        </div>
+    </div>
               )}
 });
 

@@ -55,19 +55,47 @@ var ConceptNavigator = React.createClass({
         });
         
         
-        var conceptNavigatorStyle = {
-            padding: 10,
-            background: "LightBlue"
+       
+        
+        var challengeButtonDupl = {
+            
+            background: "none",
+            padding: "12px 22px",
+            border: "2px solid #E6E7E8",
+            color: "#CCCCCC",
+            margin: "0px 0px 20px 15px",
+            borderRadius: "0",
+            fontFamily: "Century Gothic, sans-serif",
+            fontWeight: "bold",
+            fontSize: "18px",
+            display:"inline-block"
+            
         };
+        
+       
+        
+        
+        
        return (
-            <div style= {conceptNavigatorStyle} className="col-sm-12">
-                <div className="controls">
-                    <h6 style={{color:"#000"}}>Concept Navigator</h6>
-                    <div className="btn btn-default" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</div>
-                    <div className="btn btn-default" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</div>
-                    <ConceptProgress concepts={this.props.concepts}/>
+           <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+            <div className="container">
+                <div className="navbar-text pull-right">
+                        
+                            
+                            <ConceptProgress concepts={this.props.concepts}/>
+                        
+                        {ConceptNodes}
+                   
+                    <div className="col-lg-9"></div>
+                   
                 </div>
-                {ConceptNodes}
+               
+             </div>
+              <div style={{marginTop:"500px"}}>
+                    <h6 style={{color:"#000", paddingLeft:"15px"}}>Concept Navigator</h6>
+                    <div style={challengeButtonDupl} className="btn btn-primary" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</div>
+                    <div style={challengeButtonDupl} className="btn btn-primary" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</div>
+              </div>
             </div>
         );
         
@@ -76,18 +104,23 @@ var ConceptNavigator = React.createClass({
 
 var ConceptsContainer = React.createClass({
     render: function() {
+            
             var ConceptsContainerStyle = {
-            marginTop: 10,
-            padding: 10,
-            border: "1px solid #000022",
-            background: "yellow",
-            display: this.props.active ? "block" : "none"
+            background: "none",
+            display: this.props.active ? "block" : "none",
+            marginTop:"25px",
+            padding:"0",
+            margin:"0"
+            //this is the main outer concept wrapper
+            
         };
         return (
-            <div style= {ConceptsContainerStyle} className="col-sm-12">
-                {/* to be replaced with dynamic content */}
-                <h6 style={{color:"#000"}}>Concept Container</h6>
-                <ConceptPage title={this.props.title} subtitle={this.props.subtitle} data={this.props.data} /> 
+            <div style= {{position:"relative"}}>
+                <div style= {ConceptsContainerStyle} className="col-lg-12">
+                    {/* to be replaced with dynamic content */}
+                    {/*<h6 style={{color:"#000"}}>Concept Container</h6>*/}
+                    <ConceptPage title={this.props.title} subtitle={this.props.subtitle} data={this.props.data} /> 
+                </div>
             </div>
         );
     }
@@ -105,20 +138,25 @@ var ConceptProgress = React.createClass({
   {
   var concepts = this.props.concepts;
 
+    var conceptProgressHeader = {
+        color: "green"
+        
+    };
    
   return(
-      
-      
-      <ol>
-      <h6>Concept Progress</h6>
+     <div>
+     {/* <h6 style={conceptProgressHeader}>Concept Progress</h6>*/}
+     {/* <ol style={conceptProgressHeader}>
       {concepts.map(function(concept) {
         return <li key={concept.id}>{concept.Title[0]}</li>;
         })}
       
       
-      </ol>);
+      </ol>*/}
+      </div>
+      );
   }
-})
+});
     
 
 module.exports = ConceptNavigator;
