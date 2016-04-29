@@ -20,7 +20,7 @@ h4{
 
 h5{
     margin:0;
-    color:#FFFFF0;
+    color:#FFF000;
 }
 
 /*Styles of the Practice component for matching activity. Couldn't figure out how to do this easily in the component*/
@@ -44,3 +44,49 @@ h5{
         background-color: gray;
     }
     
+
+ /*removes border from youtube video*/
+iframe{
+        position:relative;
+        border:none !important;
+      
+    }
+    
+.noPad{
+      padding:0 !important;
+      margin:0 !important;
+  }
+  
+  /* Main Module Controls, just here for testing purposes. Needs to be styled to fit design */
+.control-wrapper{
+      margin-right:22px;
+      
+  }
+  
+  
+  /*set blue background behind elements on certain pages*/
+.accentBkg{
+     
+     width:100%;
+     margin:0 auto;
+     height:500px;
+     position:absolute;
+     z-index:-20;
+     top:0px;
+     background : #0BA5DE;
+ }
+ 
+.hoverBtn:hover{
+    border:1px solid #0FC6F7 !important;
+    background:#0FC6F7 !important;
+    
+}
+ 
+/*Changes size of main text overlaying module once below 768px*/
+@media (max-width:768px) {
+    .responsiveTitle {
+        font-size:30px !important;
+    }
+}
+ 
+ 

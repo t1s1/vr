@@ -33,13 +33,13 @@ var MainMenuBar = React.createClass({
         
         return (
             <div style = {headContainer}>
-                <div className="col-lg-12 noPad">
+                <div className="col-sm-12 noPad">
                 {/* to be replaced with dynamic content */}
                     <div className="row">
-                       <div className="col-lg-9">
+                       <div className="col-sm-9">
                 	        <a href="#"><img className="pull-left" src="media/gk_logo.png" width="127" height="57" alt="Global Knowledge Logo" /></a>
                        </div>{/*logo wrapper*/}
-                       <div className="col-lg-3">
+                       <div className="col-sm-3">
                         <ul style = {ulStyles}>
                             <li style = {liStyles}>
                                 <a href="#"><img className="pull-right" src="media/profilePic.png" width="27" height="27" alt="profile picture" /></a>

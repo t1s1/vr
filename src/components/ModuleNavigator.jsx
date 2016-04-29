@@ -79,7 +79,7 @@ var ModuleNavigator = React.createClass({
         
         return (
             <div className="row">
-                <div style= {moduleNavStyle} className="col-lg-12 noPad">
+                <div style= {moduleNavStyle} className="col-sm-12 noPad">
                      {ModuleNodes}
                     <div className="controls pull-right control-wrapper">
                         
@@ -102,7 +102,7 @@ var ModuleContainer = React.createClass({
         };
         
         return (
-            <div style= {moduleContainerStyle} className="col-lg-12">
+            <div style= {moduleContainerStyle} className="col-sm-12">
                 {/* to be replaced with dynamic content */}
                 
                 <Module title={this.props.title} subtitle={this.props.subtitle} data={this.props.data} /> {/*add here*/}

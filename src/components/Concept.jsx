@@ -5,8 +5,8 @@ var Concept = React.createClass({
         var conceptStyle = {
             padding: 0,
             background: "#fff",
-            border: "none",
-            width:"100%"
+            border: "none"
+           
             
           };
         
@@ -85,6 +85,7 @@ var Video = React.createClass({
             width:"100%",
             display:"block",
             position:"relative",
+           
             
             
         };
@@ -108,7 +109,7 @@ var Video = React.createClass({
         return (
             <div className="container noPad">
                 <div className="row">
-                    <div style={playerStyle} className="col-lg-12">
+                    <div style={playerStyle} className="col-sm-12">
                         {/* to be replaced with dynamic content */}
                         {/*<h6 style={{color:"#fff"}}>Video Player</h6>*/}
                 
@@ -130,7 +131,7 @@ var Text = React.createClass({
     <div className="container noPad">
         <div className="row">
             <div className="col-md-12">
-              <span style={{paddingTop:"10px", paddingBottom:"10px", paddingLeft:"10px", background:"#0FC6F7", display:"block", color:"#fff", fontFamily:"Century Gothic, sans-serif"}}>{this.props.text}</span>
+              <span style={{padding:"10px 10px", background:"#0FC6F7", display:"block", color:"#fff", fontFamily:"Century Gothic, sans-serif", overflow:"auto", height:"80px"}}>{this.props.text}</span>
                 
             </div>
         </div>

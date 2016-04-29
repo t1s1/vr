@@ -83,15 +83,15 @@ var Module = React.createClass({
         
         return (
             <div className="row">
-                <div style={moduleStyle} className="col-lg-12" >
+                <div style={moduleStyle} className="col-sm-12" >
                    
                     <div style={pictureWrapper} className="moduleChoice">
                      <img style={pictureSwitcher} src={this.props.data.Topic[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
                      <div style={overlayText}>
-                        <h3 style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center", fontSize:"125px"}}><b>Agile Method</b> {/*- {this.props.title}*/}</h3>
+                        <h3 className="responsiveTitle" style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center", fontSize:"70px"}}><b>Agile Method</b> {/*- {this.props.title}*/}</h3>
                         {/*<p style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center"}}>Video Editing {this.props.data.Topic[0].ParaBlock[0].RichText}</p> */}
                         <p style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center"}}> {this.props.subtitle}</p>
-                        <button style={ghostButton} className="enterHere">Get Started</button>
+                        <button style={ghostButton} className="enterHere hoverBtn">Get Started</button>
                        
                         
                     </div>

@@ -17,7 +17,7 @@ var ConceptPage = React.createClass({
             <div className="container">
                 <div className="row">
                     
-                        <div style= {promiseStyle} className="col-lg-12">
+                        <div style= {promiseStyle} className="col-sm-12">
                             {/* to be replaced with dynamic content */}
                             
                             <h6 style={{color:"#DD3300"}}>{/*Concept Page*/}</h6>

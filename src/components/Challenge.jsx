@@ -66,7 +66,7 @@ var ChallengeIntro = React.createClass({
         return(
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-12">
+                    <div className="col-sm-12">
                     
                         <h3>{this.props.data.Title}</h3>
                         

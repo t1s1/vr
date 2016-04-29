@@ -86,7 +86,7 @@ var ConceptNavigator = React.createClass({
                         
                         {ConceptNodes}
                    
-                    <div className="col-lg-9"></div>
+                    <div className="col-sm-9"></div>
                    
                 </div>
                
@@ -116,7 +116,7 @@ var ConceptsContainer = React.createClass({
         };
         return (
             <div style= {{position:"relative"}}>
-                <div style= {ConceptsContainerStyle} className="col-lg-12">
+                <div style= {ConceptsContainerStyle} className="col-sm-12">
                     {/* to be replaced with dynamic content */}
                     {/*<h6 style={{color:"#000"}}>Concept Container</h6>*/}
                     <ConceptPage title={this.props.title} subtitle={this.props.subtitle} data={this.props.data} /> 

@@ -49,7 +49,7 @@ var Course = React.createClass({
                     
                 
                    
-                        <div style= {CourseStyle} className="col-lg-12 noPad">
+                        <div style= {CourseStyle} className="col-sm-12 noPad">
                             {/* to be replaced with dynamic content */}
                             <h2 style= {titleStyle} >Multimedia Production 101 Master Course</h2>
                             <p style= {descripStyle} >Want to be the best Multimedia Specialist? Would you like to share your skills with the world, showing
