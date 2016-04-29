@@ -49,9 +49,9 @@ var Course = React.createClass({
                     
                 
                    
+
                         <div style= {CourseStyle} className="col-sm-12 noPad">
-                            {/* to be replaced with dynamic content */}
-                            <h2 style= {titleStyle} >Multimedia Production 101 Master Course</h2>
+                            <h2 style= {titleStyle} >{this.props.courseTitle}</h2>
                             <p style= {descripStyle} >Want to be the best Multimedia Specialist? Would you like to share your skills with the world, showing
         off your abilites in everything media? Learn the basics of animating, audio engineering, web design (including)
         ui/ux and many other trade skills.</p>

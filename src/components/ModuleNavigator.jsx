@@ -50,7 +50,7 @@ var ModuleNavigator = React.createClass({
             var genKey = moduleNode["$"]["xy:guid"];
 
             return (
-                <ModuleContainer active={isActive} key={genKey} title={moduleNode.Title} subtitle={moduleNode.SubTitle} data ={moduleNode} text={moduleNode.text} />
+                <ModuleContainer active={isActive} key={genKey} data ={moduleNode} text={moduleNode.text} />
             );
         });
         
@@ -102,10 +102,9 @@ var ModuleContainer = React.createClass({
         };
         
         return (
+
             <div style= {moduleContainerStyle} className="col-sm-12">
-                {/* to be replaced with dynamic content */}
-                
-                <Module title={this.props.title} subtitle={this.props.subtitle} data={this.props.data} /> {/*add here*/}
+                <Module data={this.props.data} /> 
             </div>//end of MODULE CONTAINER
         );
     }

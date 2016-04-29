@@ -23,19 +23,62 @@ h5{
     color:#FFF000;
 }
 
-/*Styles of the Practice component for matching activity. Couldn't figure out how to do this easily in the component*/
 
-.card {
+    /*removes border from youtube video*/
+    iframe{
+        position:relative;
+        border:none !important;
+      
+    }
+    
+  .noPad{
+      padding:0 !important;
+      margin:0 !important;
+  }
+  
+  /**** Main Module Controls ****/
+  .control-wrapper{
+      margin-right:22px;
+      
+  }
+  
+  
+  /*set blue background behind elements*/
+ .accentBkg{
+     
+     width:100%;
+     margin:0 auto;
+     height:500px;
+     position:absolute;
+     z-index:-20;
+     top:0px;
+     background : #0BA5DE;
+ }
+
+/*Evan's styles for matching activity. Couldn't figure out how to do this easily in the component*/
+
+card {
         background-color: orange;
         height: 50px;
         width: 100px;
         margin: 5px;
     }
-    .match {
+    .set1 {
         background-color: blue;
         color: white;
+        float: left;
     }
     
+    .set2 {
+        background-color: purple;
+        float: right;
+        transition:2s;
+    }
+    
+    .set2 .card:active {
+        background-color: red;
+            }
+   
    [data-clicked="yes"] {
         border: 2px red solid;
     }
@@ -43,6 +86,7 @@ h5{
     [data-clicked="done"] {
         background-color: gray;
     }
+
     
 
  /*removes border from youtube video*/
@@ -90,3 +134,6 @@ iframe{
 }
  
  
+
+/*End matching styles */    
+

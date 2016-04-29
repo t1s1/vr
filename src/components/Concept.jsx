@@ -1,3 +1,4 @@
+/*global $*/
 var React = require("react");
 var Concept = React.createClass({
     
@@ -5,18 +6,15 @@ var Concept = React.createClass({
         var conceptStyle = {
             padding: 0,
             background: "#fff",
-            border: "none"
-           
+            border: "none",
             
           };
         
-       
         var object = this.props.data;
         //Array for components that pass 
         var componentpack =[];
-        
-        
-         //Checking for ParaBlock vs QuestionBlock
+       
+        //Checking for ParaBlock vs QuestionBlock
         var contentobject;
         var practiceobject;
       
@@ -36,7 +34,7 @@ var Concept = React.createClass({
             image = contentobject.Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri;
             //This if statement filters out photos that are tagged as "Module Selector Photo" - they appear in module selector, not on concept page
             if (contentobject.Figure[0].MediaObject[0].Renditions[0].Web[0].$.ProductionNote !== "Module Selector Photo") {
-            componentpack.push(<Image image={image} />);
+            componentpack.push(<Image image={image}/>);
             }
         }
         
@@ -44,23 +42,29 @@ var Concept = React.createClass({
         var video;
         if(contentobject.hasOwnProperty("Movie")) { 
             video = contentobject.Movie[0].LaunchMovie[0]; 
-            componentpack.push(<Video video={video}  />);
+            componentpack.push(<Video video={video}/>);
         }
               }
+              
         //PRACTICE
         var practice;
         if (object.hasOwnProperty("QuestionBlock")) {
         practiceobject = object.QuestionBlock[0];
-        practice = practiceobject.MatchingActivity[0];
-            componentpack.push(<Practice practice={practice}  />);
+        
+        if (practiceobject.hasOwnProperty("MatchingActivity")) {
+            practice = practiceobject.MatchingActivity[0];
+            componentpack.push(<Matching data={practice}/>);
+         }
+        
+        else if (practiceobject.hasOwnProperty("MultipleChoice")) {
+            practice = practiceobject.MultipleChoice[0];
+            componentpack.push(<MC data={practice}/>);
+         }
         }
-        
-        
        
         return (
         <div class ="row">
             <div style= {conceptStyle} className="col-md-12 noPad">
-               
                 {componentpack}
             </div>
         </div>
@@ -76,7 +80,6 @@ var Image = React.createClass({
       );
      }
    });
-
 
 var Video = React.createClass({
       render: function () {
@@ -109,16 +112,10 @@ var Video = React.createClass({
         return (
             <div className="container noPad">
                 <div className="row">
-                    <div style={playerStyle} className="col-sm-12">
-                        {/* to be replaced with dynamic content */}
-                        {/*<h6 style={{color:"#fff"}}>Video Player</h6>*/}
-                
-                      
+                    <div style={playerStyle} className="col-sn-12">
                         <iframe className="embed-responsive-item" width="100%" height="500" src={this.props.video} frameborder="0" allowfullscreen></iframe>
-                      
-                          
-                        </div>
                     </div>
+                </div>
             </div>
             
         );
@@ -131,49 +128,54 @@ var Text = React.createClass({
     <div className="container noPad">
         <div className="row">
             <div className="col-md-12">
-              <span style={{padding:"10px 10px", background:"#0FC6F7", display:"block", color:"#fff", fontFamily:"Century Gothic, sans-serif", overflow:"auto", height:"80px"}}>{this.props.text}</span>
-                
+             <span style={{padding:"10px 10px", background:"#0FC6F7", display:"block", color:"#fff", fontFamily:"Century Gothic, sans-serif", overflow:"auto", height:"80px"}}>{this.props.text}</span>
             </div>
         </div>
     </div>
               )}
 });
 
-//This component only works with Matching Activities. It's a "hot mess". Distractors are randomized.  
-var Practice = React.createClass({
+var Matching = React.createClass({
+     componentDidMount: function() {
+         var clicked;
+         var anycard = ($(".card"))
+         var set1card = ($(".set1 .card"));
+         var set2card = ($(".set2 .card"));
+       
+        
+        
+        
+        set1card.click(function(){
+        $.each(set1card, function(){
+    //remove clicked highlight when second set is clicked
+        if ($(this).attr("data-clicked") !== "done") {
+        $(this).attr("data-clicked", "no");
+    }
+  });
+    //switch clicked to yes and set clicked variable
+        if ($(this).attr("data-clicked") !== "done") {
+        $(this).attr("data-clicked", "yes");
+        clicked = $(this);
+  }
+});
+        set2card.click(function(){
+        if (clicked.attr("data-num") == $(this).attr("data-num")) {
+    //$( ".feedback" ).append( "" );
+        $( ".feedback" ).empty().append( "<p>You are correct!</p>" );
+        clicked.attr("data-clicked", "done");
+        $(this).attr("data-clicked", "done");
+  }
+        if (clicked.attr("data-num") != $(this).attr("data-num")) {
+    //$( ".feedback" ).append( "" );
+        $( ".feedback" ).empty().append( "<p>You are wrong!</p>" );
+  }
+});
+     },
+     
      render: function () {
-var clicked;
-var matchers=($( ".matcher" ));
-var match=($(".match"));
-
-matchers.click(function(event) {
-$.each(matchers, function(index, val) {
-  if ($(this).attr("data-clicked") !== "done") {
-    $(this).attr("data-clicked", "no");
-  }
-});
-$(this).attr("data-clicked", "yes");
-clicked = $(this);
-
-});
-
-match.click(function(event) {
-$.each(match, function(index, val) {
-  if ($(this).attr("data-clicked") !== "done") {
-    $(this).attr("data-clicked", "no");
-  }
-});
-$(this).attr("data-clicked","yes");
-if (clicked.attr("data-num") == $(this).attr("data-num")) {
-  $( ".feedback" ).replaceWith( "<p>This is feedback for the CORRECT answer</p>" );
-  $(this).attr("data-clicked", "done");
-  clicked.attr("data-clicked", "done");
-      }
-else {
-    $( ".feedback" ).replaceWith( "<p>This is feedback for the WRONG answer</p>" );
-}      
-});
-         var practice = this.props.practice;
+        
+        ///////////////////////////////////////////////////////Array makin'
+         var practice = this.props.data;
          var choices = practice.Option;
          var distractorarray = [];
          var matcharray = [];
@@ -182,7 +184,7 @@ else {
          var Shuffle = function (o) {
      	 for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
 	     return o;
-        }
+        };
          
        $.each(choices, function(index, value) {
           if (value.Distractor) {
@@ -193,14 +195,16 @@ else {
           }
        } );
         distractorarray.map(function(dist) {
-        randomarray.push(<div data-num={dist.id} data-clicked="no" className="card matcher">{dist}</div>);
+        randomarray.push(<div data-num={dist.id} data-clicked="no" className="card">{dist}</div>);
         });
         Shuffle(randomarray);
-	    
+///////////////////////////////////////////////////////// 
+        
         return (
         <div className="col-sm-12">
+        
         <p>{practice.QuestionStem[0].RichText}</p>
-        <div>
+        <div className="set1">
         {
        randomarray.map(function(dist) {
         console.log(dist);
@@ -208,20 +212,70 @@ else {
         })
         }
         </div>
-        <div>
+        <div className="set2">
                {
                matcharray.map(function(mat) {
-               return <div data-num={mat.id} data-clicked="no" className="card match">{mat}</div>;
+               return <div data-num={mat.id} data-clicked="no" className="card">{mat}</div>;
         })
                    
                }
         </div>
+        
         <div className="feedback"></div>
-        </div>);
+        
+        </div>
+        );
      }});
+ 
+var MC = React.createClass({
+     componentDidMount: function() {
+         $("input").click(function() {
+        var qnum = $(this).parent().attr('id');
+        if($(this).attr("data-t") == "true") {
+        $( ".feedback" + qnum ).empty().append( "<p>You are correct!</p>" );
+    }
+        else {
+        $( ".feedback" + qnum ).empty().append( "<p>You are wrong.</p>" );
+  }
+}
+  );
+     },
+     
+     render: function () {
+    ///////////////////////////////////////////////////////Array makin'
          
+         var practice = this.props.data;
+         var choices = practice.Option;
+         var optionArray = [];
+         var randomArray = [];
+        
+         var Shuffle = function (o) {
+     	 for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+	     return o;
+        };
+         
+       $.each(choices, function(index, value) {
+          if (value.$.IsCorrect == "false") {
+              optionArray.push(<input type="radio" name="1" data-t={false}>{this.Distractor[0].RichText}</input>);
+          }
+          else if (value.$.IsCorrect == "true") {
+              optionArray.push(<input type="radio" name="1" data-t={true}>{this.Distractor[0].RichText}</input>);
+          }
+       });
+        optionArray = Shuffle(optionArray);
+    
+    //////////////////////////////////////////////////
 
-
+        return (
+        <div className="col-sm-12">
+        <p>{practice.QuestionStem[0].RichText}</p>
+        
+        <div id="1">{optionArray}</div>
+      
+        <div className="feedback1"></div>
+        
+        </div>);
+     }});        
 
 module.exports = Concept;
 

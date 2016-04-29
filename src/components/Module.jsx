@@ -86,12 +86,14 @@ var Module = React.createClass({
                 <div style={moduleStyle} className="col-sm-12" >
                    
                     <div style={pictureWrapper} className="moduleChoice">
-                     <img style={pictureSwitcher} src={this.props.data.Topic[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
+                     <img style={pictureSwitcher} src={this.props.data.IntroBlock[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
                      <div style={overlayText}>
-                        <h3 className="responsiveTitle" style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center", fontSize:"70px"}}><b>Agile Method</b> {/*- {this.props.title}*/}</h3>
+
+                        <h3 className="responsiveTitle" style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center", fontSize:"70px"}}><b>{this.props.data.Title}</b></h3>
                         {/*<p style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center"}}>Video Editing {this.props.data.Topic[0].ParaBlock[0].RichText}</p> */}
-                        <p style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center"}}> {this.props.subtitle}</p>
-                        <button style={ghostButton} className="enterHere hoverBtn">Get Started</button>
+                        <p style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center"}}>{this.props.subtitle}</p>
+                        <button style={ghostButton} className="enterHere">Get Started</button>
+
                        
                         
                     </div>
