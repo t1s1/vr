@@ -19,7 +19,7 @@ var ConceptPage = React.createClass({
 
                     <div style= {promiseStyle} className="col-sm-12">
                         <h3 style={{color:"#fff", fontFamily:"Century Gothic, sans-serif",fontWeight:"bold"}}>{this.props.title}</h3>
-                            <Concept data={this.props.data} title={this.props.data.Title}/>
+                         <Concept data={this.props.data} title={this.props.data.Title}/>
                     </div>
                 </div>
             </div>
