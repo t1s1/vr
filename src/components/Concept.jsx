@@ -194,8 +194,9 @@ var Matching = React.createClass({
               matcharray.push(this.Match[0].RichText);
           }
        } );
-        distractorarray.map(function(dist) {
-        randomarray.push(<div data-num={dist.id} data-clicked="no" className="card">{dist}</div>);
+        distractorarray.map(function(dist, id) {
+        console.log(id);
+        randomarray.push(<div data-num={id} data-clicked="no" className="card">{dist}</div>);
         });
         Shuffle(randomarray);
 ///////////////////////////////////////////////////////// 
@@ -207,15 +208,15 @@ var Matching = React.createClass({
         <div className="set1">
         {
        randomarray.map(function(dist) {
-        console.log(dist);
+        //console.log(dist);
         return dist;
         })
         }
         </div>
         <div className="set2">
                {
-               matcharray.map(function(mat) {
-               return <div data-num={mat.id} data-clicked="no" className="card">{mat}</div>;
+               matcharray.map(function(mat, id) {
+               return <div data-num={id} data-clicked="no" className="card">{mat}</div>;
         })
                    
                }
