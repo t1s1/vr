@@ -113,7 +113,7 @@ var Video = React.createClass({
             <div className="container noPad">
                 <div className="row">
                     <div style={playerStyle} className="col-sn-12">
-                        <iframe className="embed-responsive-item" width="100%" height="500" src={this.props.video} frameborder="0" allowfullscreen></iframe>
+                        <iframe className="embed-responsive-item" width="100%" src={this.props.video} frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

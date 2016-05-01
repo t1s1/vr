@@ -106,21 +106,23 @@ var ConceptsContainer = React.createClass({
     render: function() {
             
             var ConceptsContainerStyle = {
+            border: "solid 1px red",
             background: "none",
             display: this.props.active ? "block" : "none",
             marginTop:"25px",
             padding:"0",
-            margin:"0"
+            margin:"0 auto",
+            width: "100%",
+            
             //this is the main outer concept wrapper
             
         };
         return (
-            <div style= {{position:"relative"}}>
-
+           
                 <div style= {ConceptsContainerStyle} className="col-sm-12">
                     <ConceptPage title={this.props.title} subtitle={this.props.subtitle} data={this.props.data} /> 
                 </div>
-            </div>
+          
         );
     }
 });

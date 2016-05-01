@@ -1,3 +1,8 @@
+body
+{
+    font-family: Century Gothic, sans-serif,
+}
+
 h1{
     margin:0;
     color:#F00000;
@@ -58,9 +63,9 @@ h5{
 /*Evan's styles for matching activity. Couldn't figure out how to do this easily in the component*/
 
 card {
-        background-color: orange;
-        height: 50px;
-        width: 100px;
+        height: 5%;
+        width: 30%;
+        padding: 5px;
         margin: 5px;
     }
     .set1 {
@@ -86,7 +91,7 @@ card {
     [data-clicked="done"] {
         background-color: gray;
     }
-
+/*End matching styles */    
     
 
  /*removes border from youtube video*/
@@ -135,5 +140,5 @@ iframe{
  
  
 
-/*End matching styles */    
+
 

@@ -44,13 +44,14 @@ var ModuleNavigator = React.createClass({
     
     render: function() {
         var currentModule = this.state.currentModule;
-        
+        var index;
         var ModuleNodes = this.props.modules.map(function (moduleNode, index) { 
+            index = index;
             var isActive = currentModule === index;
             var genKey = moduleNode["$"]["xy:guid"];
 
             return (
-                <ModuleContainer active={isActive} key={genKey} data ={moduleNode} text={moduleNode.text} />
+                <ModuleContainer index={index} active={isActive} key={genKey} data ={moduleNode} text={moduleNode.text} />
             );
         });
         
@@ -104,7 +105,7 @@ var ModuleContainer = React.createClass({
         return (
 
             <div style= {moduleContainerStyle} className="col-sm-12">
-                <Module data={this.props.data} /> 
+                <Module index={this.props.index}  data={this.props.data} /> 
             </div>//end of MODULE CONTAINER
         );
     }

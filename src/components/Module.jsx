@@ -21,14 +21,7 @@ var Module = React.createClass({
       });
   },
   
-  
-  
- 
-    
     render: function () {
-        
-        
-      
         
         var moduleStyle = {
             color: "white",
@@ -41,19 +34,17 @@ var Module = React.createClass({
             position: "relative",
             zIndex: 1,
             display: "block",
-            width: "100%",
-            margin: "35px auto 0 auto"
-            
-            
-            
+            margin: "20px auto 0 auto",
+            //Note from Evan -- I don't think this objectFit style is working like I wanted. Using overflow hidden on container instead.
+            objectFit: "fill",
         };
         
         var pictureWrapper = {
-            
             position:"relative",
-            display:"block"
+            display:"block",
+            overflow: "hidden",
+            height: "350px",
         };
-       
        
        var overlayText = {
            position: "absolute",
@@ -61,7 +52,8 @@ var Module = React.createClass({
            top: "50%",
            left:"50%",
            transform: "translate(-50%, -50%)",
-           textAlign:"center"
+           textAlign:"center",
+           width: "80%"
            
        };
         
@@ -78,9 +70,6 @@ var Module = React.createClass({
         };
     
      
-      
-        
-        
         return (
             <div className="row">
                 <div style={moduleStyle} className="col-sm-12" >
@@ -89,7 +78,7 @@ var Module = React.createClass({
                      <img style={pictureSwitcher} src={this.props.data.IntroBlock[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
                      <div style={overlayText}>
 
-                        <h3 className="responsiveTitle" style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center", fontSize:"70px"}}><b>{this.props.data.Title}</b></h3>
+                        <h3 className="responsiveTitle" style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center", fontSize:"40px"}}><b>Module {this.props.index}: {this.props.data.Title}</b></h3>
                         {/*<p style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center"}}>Video Editing {this.props.data.Topic[0].ParaBlock[0].RichText}</p> */}
                         <p style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center"}}>{this.props.subtitle}</p>
                         <button style={ghostButton} className="enterHere">Get Started</button>
