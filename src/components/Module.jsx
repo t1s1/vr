@@ -17,7 +17,9 @@ var Module = React.createClass({
      componentDidMount: function() {
       $(".enterHere").click( function() {
           $( ".moduleChoice" ).css( "display", "none" );
+          $( ".moduleButtons" ).css( "display", "none" );
           $( ".conceptWrapper" ).css( "display", "block" );
+          $( ".accentBkg" ).css( "display", "block" );
       });
   },
   
@@ -44,6 +46,7 @@ var Module = React.createClass({
             display:"block",
             overflow: "hidden",
             height: "350px",
+            
         };
        
        var overlayText = {

@@ -4,11 +4,11 @@ var Concept = React.createClass({
     
     render: function () {
         var conceptStyle = {
-            padding: 0,
-            background: "#fff",
-            border: "none",
-            
-          };
+            width: "100%",
+            paddingLeft: "20px",
+            paddingBottom: "100px",
+            //maxHeight: "375px",
+        };
         
         var object = this.props.data;
         //Array for components that pass 
@@ -63,35 +63,35 @@ var Concept = React.createClass({
         }
        
         return (
-        <div class ="row">
-            <div style= {conceptStyle} className="col-md-12 noPad">
+        
+            <div style= {conceptStyle} className="col-md-12">
                 {componentpack}
             </div>
-        </div>
+       
         );
     }
 });
 
 var Image = React.createClass({
      render: function () {
- 
+     
+     var imgStyle = {
+       maxHeight: "500px",
+       marginTop: "10px",
+       marginBottom: "10px",
+       display: "block",
+     };
+     
      return (
-     <img src={this.props.image}/>
+     <div>
+     <img style={imgStyle} src={this.props.image}/>
+     </div>
       );
      }
    });
 
 var Video = React.createClass({
       render: function () {
-        var playerStyle = {
-            border: "none",
-            width:"100%",
-            display:"block",
-            position:"relative",
-           
-            
-            
-        };
         
         var challengeTextPrimer = {
             fontFamily: "Century Gothic, sans-serif",
@@ -103,21 +103,22 @@ var Video = React.createClass({
             progid:"DXImageTransform.Microsoft.Alpha(opacity=69)",
             paddingLeft:"20px",
             paddingTop:"20px"
-          
-            
         };
         
-       
-
+        var playerStyle = {
+            border: "none",
+            width:"100%",
+            height: '350px',
+            display:"block",
+            position:"relative",
+        };
+        
         return (
-            <div className="container noPad">
-                <div className="row">
-                    <div style={playerStyle} className="col-sn-12">
-                        <iframe className="embed-responsive-item" width="100%" src={this.props.video} frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-            
+           <div style={{width:'100%'}} className="noPad">
+                <iframe style={{margin:'0 auto', marginTop: '10px', display:'block'}} src={this.props.video} allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" align="middle" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="620" height="349"></iframe>
+<script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
+                {/*<iframe style={playerStyle}  src={this.props.video} frameborder="0" allowfullscreen></iframe>*/}
+           </div>
         );
     }
 });
@@ -128,7 +129,8 @@ var Text = React.createClass({
     <div className="container noPad">
         <div className="row">
             <div className="col-md-12">
-             <span style={{padding:"10px 10px", background:"#0FC6F7", display:"block", color:"#fff", fontFamily:"Century Gothic, sans-serif", overflow:"auto", height:"80px"}}>{this.props.text}</span>
+             <span style={{marginTop: "10px",
+       marginBottom: "10px",}}>{this.props.text}</span>
             </div>
         </div>
     </div>
@@ -142,9 +144,7 @@ var Matching = React.createClass({
          var set1card = ($(".set1 .card"));
          var set2card = ($(".set2 .card"));
        
-        
-        
-        
+
         set1card.click(function(){
         $.each(set1card, function(){
     //remove clicked highlight when second set is clicked
@@ -160,13 +160,13 @@ var Matching = React.createClass({
 });
         set2card.click(function(){
         if (clicked.attr("data-num") == $(this).attr("data-num")) {
-    //$( ".feedback" ).append( "" );
+    
         $( ".feedback" ).empty().append( "<p>You are correct!</p>" );
         clicked.attr("data-clicked", "done");
         $(this).attr("data-clicked", "done");
   }
         if (clicked.attr("data-num") != $(this).attr("data-num")) {
-    //$( ".feedback" ).append( "" );
+    
         $( ".feedback" ).empty().append( "<p>You are wrong!</p>" );
   }
 });
@@ -205,7 +205,7 @@ var Matching = React.createClass({
         <div className="col-sm-12">
         
         <p>{practice.QuestionStem[0].RichText}</p>
-        <div className="set1">
+        <div className="set1 col-sm-6">
         {
        randomarray.map(function(dist) {
         //console.log(dist);
@@ -213,7 +213,7 @@ var Matching = React.createClass({
         })
         }
         </div>
-        <div className="set2">
+        <div className="set2 col-sm-6">
                {
                matcharray.map(function(mat, id) {
                return <div data-num={id} data-clicked="no" className="card">{mat}</div>;
@@ -222,7 +222,7 @@ var Matching = React.createClass({
                }
         </div>
         
-        <div className="feedback"></div>
+        <div style={{display: 'block', color:'black', margin:'30px'}} className="feedback col-sm-12"></div>
         
         </div>
         );
@@ -257,10 +257,10 @@ var MC = React.createClass({
          
        $.each(choices, function(index, value) {
           if (value.$.IsCorrect == "false") {
-              optionArray.push(<input type="radio" name="1" data-t={false}>{this.Distractor[0].RichText}</input>);
+              optionArray.push(<input type="radio" name="1" data-t={false}>{this.Distractor[0].RichText}<br/></input>);
           }
           else if (value.$.IsCorrect == "true") {
-              optionArray.push(<input type="radio" name="1" data-t={true}>{this.Distractor[0].RichText}</input>);
+              optionArray.push(<input type="radio" name="1" data-t={true}>{this.Distractor[0].RichText}<br/></input>);
           }
        });
         optionArray = Shuffle(optionArray);
@@ -273,7 +273,7 @@ var MC = React.createClass({
         
         <div id="1">{optionArray}</div>
       
-        <div className="feedback1"></div>
+        <div style={{marginTop: '5px'}}className="feedback1"></div>
         
         </div>);
      }});        

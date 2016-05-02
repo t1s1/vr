@@ -1,7 +1,7 @@
 var React = require("react");
 var Module = require("./Module.jsx");
-
 var ModuleNavigator = React.createClass({
+    
     getInitialState: function() {
         return {
             currentModule: this.props.initialModule,
@@ -56,14 +56,10 @@ var ModuleNavigator = React.createClass({
         });
         
         var moduleNavStyle = {
-            
-           
             background: "none"
         };
         
-        
         var challengeButton = {
-            
             background: "none",
             padding: "12px 22px",
             border: "2px solid #E6E7E8",
@@ -75,14 +71,13 @@ var ModuleNavigator = React.createClass({
             fontSize: "18px",
             marginTop: "20px",
             display:"inline-block" //unhide this when want to see front page
-            
         };
         
         return (
             <div className="row">
                 <div style= {moduleNavStyle} className="col-sm-12 noPad">
                      {ModuleNodes}
-                    <div className="controls pull-right control-wrapper">
+                    <div className="controls pull-right control-wrapper moduleButtons">
                         
                         <button style = {challengeButton} type="button" className="btn btn-primary" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</button>
                         <button style = {challengeButton} type="button" className="btn btn-primary" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</button>
@@ -99,7 +94,8 @@ var ModuleContainer = React.createClass({
         
         var moduleContainerStyle = {
           
-            display: this.props.active ? "block" : "none"
+            display: this.props.active ? "block" : "none",
+            
         };
         
         return (

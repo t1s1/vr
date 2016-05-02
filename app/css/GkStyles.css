@@ -1,6 +1,6 @@
 body
 {
-    font-family: Century Gothic, sans-serif,
+    font-family: "Century Gothic", sans-serif,
 }
 
 h1{
@@ -29,17 +29,7 @@ h5{
 }
 
 
-    /*removes border from youtube video*/
-    iframe{
-        position:relative;
-        border:none !important;
-      
-    }
-    
-  .noPad{
-      padding:0 !important;
-      margin:0 !important;
-  }
+  
   
   /**** Main Module Controls ****/
   .control-wrapper{
@@ -47,50 +37,45 @@ h5{
       
   }
   
-  
-  /*set blue background behind elements*/
- .accentBkg{
-     
-     width:100%;
-     margin:0 auto;
-     height:500px;
-     position:absolute;
-     z-index:-20;
-     top:0px;
-     background : #0BA5DE;
- }
 
 /*Evan's styles for matching activity. Couldn't figure out how to do this easily in the component*/
-
-card {
-        height: 5%;
-        width: 30%;
-        padding: 5px;
-        margin: 5px;
-    }
-    .set1 {
-        background-color: blue;
-        color: white;
-        float: left;
+.set1 .card[data-clicked="done"] {
+        background-color: gray;
     }
     
-    .set2 {
-        background-color: purple;
-        float: right;
-        transition:2s;
+.set2 .card[data-clicked="done"] {
+        background-color: gray;
+    }
+
+    .card {
+        width: 90%;
+        padding: 10px;
+        margin: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #ffffff;
+        background-color:white;
+        
+    }
+    
+  
+   .set1 .card {
+        background-color: #f16521;
+       
+    }
+    .set2 .card {
+        background-color: #062F57;
     }
     
     .set2 .card:active {
-        background-color: red;
+        background-color: #ffb813;
             }
    
    [data-clicked="yes"] {
-        border: 2px red solid;
+        border: 2px #ed1c24 solid;
     }
     
-    [data-clicked="done"] {
-        background-color: gray;
-    }
+    
 /*End matching styles */    
     
 
@@ -118,11 +103,12 @@ iframe{
      
      width:100%;
      margin:0 auto;
-     height:500px;
+     height:250px;
      position:absolute;
      z-index:-20;
      top:0px;
      background : #0BA5DE;
+     
  }
  
 .hoverBtn:hover{

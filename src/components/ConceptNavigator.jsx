@@ -42,6 +42,16 @@ var ConceptNavigator = React.createClass({
         }  
     },
     
+     componentDidMount: function() {
+      $(".backToModules").click( function() {
+          $( ".moduleChoice" ).css( "display", "block" );
+          $( ".moduleButtons" ).css( "display", "block" );
+          $( ".conceptWrapper" ).css( "display", "none" );
+          $( ".accentBkg" ).css( "display", "none" );
+         
+      });
+  },
+    
     render: function () {
         var currentConcept = this.state.currentConcept;
         var index;
@@ -59,44 +69,57 @@ var ConceptNavigator = React.createClass({
         
         var challengeButtonDupl = {
             
-            background: "none",
+            background: "white",
             padding: "12px 22px",
             border: "2px solid #E6E7E8",
             color: "#CCCCCC",
-            margin: "0px 0px 20px 15px",
+            margin: "20px 0px 20px 15px",
             borderRadius: "0",
             fontFamily: "Century Gothic, sans-serif",
             fontWeight: "bold",
-            fontSize: "18px",
+            fontSize: "14px",
             display:"inline-block"
             
         };
         
+       var conceptBox = {
        
+       //height: "80%",
+       };
+       
+       var buttonBar = {
+           position:"fixed",
+           bottom:"0",
+           background: "#ffffff",
+           width: "100%",
+           borderTop: "2px solid #E6E7E8",
+       };
         
         
         
        return (
-           <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+           
+            {/*
+            Evan hid this -- not currently showing concept progress
+            <div class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
             <div className="container">
                 <div className="navbar-text pull-right">
-                        
-                            
-                            <ConceptProgress concepts={this.props.concepts}/>
-                        
-                        {ConceptNodes}
-                   
-                    <div className="col-sm-9"></div>
-                   
+                        <ConceptProgress concepts={this.props.concepts}/>
+                                        <div className="col-sm-9"></div>
+                              </div>
                 </div>
-               
              </div>
-              <div style={{marginTop:"500px"}}>
-                    <h6 style={{color:"#000", paddingLeft:"15px"}}>Concept Navigator</h6>
+             */},
+             
+              <div style={conceptBox}>
+               {ConceptNodes}
+                    <div style={buttonBar}>
                     <div style={challengeButtonDupl} className="btn btn-primary" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</div>
                     <div style={challengeButtonDupl} className="btn btn-primary" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</div>
+                    <div style={challengeButtonDupl} className="btn btn-primary backToModules" onClick={this.toggleNext}>Back to Modules</div>
+                    </div>      
               </div>
-            </div>
+           
         );
         
     }
@@ -106,13 +129,9 @@ var ConceptsContainer = React.createClass({
     render: function() {
             
             var ConceptsContainerStyle = {
-            border: "solid 1px red",
-            background: "none",
+           
             display: this.props.active ? "block" : "none",
-            marginTop:"25px",
-            padding:"0",
-            margin:"0 auto",
-            width: "100%",
+            
             
             //this is the main outer concept wrapper
             

@@ -4,21 +4,21 @@ var ConceptPage = React.createClass({
     
     render: function () {
         
-        var promiseStyle = {
-            padding: 10,
-            background: "none",
-            position: "relative",
-            margin: "0 auto"
-        };
         
+        var outerConcept = {
+            background: "none",
+            marginTop:"25px",
+            padding:"0",
+            margin:"0 auto",
+            width: "100%",
+        }    
     
         
         return (
-            <div className="container">
+            <div className="container" style={outerConcept}>
                 <div className="row">
-
-                    <div style= {promiseStyle} className="col-sm-12">
-                        <h3 style={{color:"#fff", fontFamily:"Century Gothic, sans-serif",fontWeight:"bold"}}>{this.props.title}</h3>
+                    <div className="col-sm-12">
+                        <h3 style={{paddingLeft: '0px', color:"#fff", fontFamily:"Century Gothic, sans-serif"}}>{this.props.title}</h3>
                          <Concept data={this.props.data} title={this.props.data.Title}/>
                     </div>
                 </div>
