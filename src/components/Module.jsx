@@ -36,16 +36,18 @@ var Module = React.createClass({
             position: "relative",
             zIndex: 1,
             display: "block",
-            margin: "20px auto 0 auto",
-            //Note from Evan -- I don't think this objectFit style is working like I wanted. Using overflow hidden on container instead.
-            objectFit: "fill",
+            margin: "20px auto 0 auto"
+            
+           
+           
         };
         
         var pictureWrapper = {
             position:"relative",
             display:"block",
-            overflow: "hidden",
-            height: "350px",
+            height: "500px",
+            overflow:"hidden"
+            
             
         };
        
@@ -78,7 +80,7 @@ var Module = React.createClass({
                 <div style={moduleStyle} className="col-sm-12" >
                    
                     <div style={pictureWrapper} className="moduleChoice">
-                     <img style={pictureSwitcher} src={this.props.data.IntroBlock[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
+                     <img className="img-responsive" style={pictureSwitcher} src={this.props.data.IntroBlock[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
                      <div style={overlayText}>
 
                         <h3 className="responsiveTitle" style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center", fontSize:"40px"}}><b>Module {this.props.index}: {this.props.data.Title}</b></h3>

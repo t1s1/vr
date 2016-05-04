@@ -116,6 +116,13 @@ iframe{
     background:#0FC6F7 !important;
     
 }
+
+
+
+
+
+
+
  
 /*Changes size of main text overlaying module once below 768px*/
 @media (max-width:768px) {
@@ -127,4 +134,18 @@ iframe{
  
 
 
+.btnOverRides{
+    padding:12px 22px !important;
+    border: 2px solid #e6e7e8 !important;
+    color:#cccccc !important;
+    margin: 20px 0 20px 15px !important;
+    border-radius: 0 !important;
+    font-family: Century Gothic, san-serif !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    background-color:transparent !important;
+    width:180px !important;
+    line-height: 1.455 !important;
+    
 
+}
