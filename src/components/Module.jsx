@@ -81,12 +81,12 @@ var Module = React.createClass({
                    
                     <div style={pictureWrapper} className="moduleChoice">
                      <img className="img-responsive" style={pictureSwitcher} src={this.props.data.IntroBlock[0].ParaBlock[0].Figure[0].MediaObject[0].Renditions[0].Web[0].$.uri} />
-                     <div style={overlayText}>
+                     <div style={overlayText} className="overlayTextResp">
 
-                        <h3 className="responsiveTitle" style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center", fontSize:"40px"}}><b>Module {this.props.index}: {this.props.data.Title}</b></h3>
+                        <h3 className="overlayTitle" style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center", fontSize:"40px"}}><b>Module {this.props.index}: {this.props.data.Title}</b></h3>
                         {/*<p style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center"}}>Video Editing {this.props.data.Topic[0].ParaBlock[0].RichText}</p> */}
                         <p style = {{color:"#fff", fontFamily:"Century Gothic, sans-serif", textAlign:"center"}}>{this.props.subtitle}</p>
-                        <button style={ghostButton} className="enterHere">Get Started</button>
+                        <button style={ghostButton} className="enterHere">Get Started!</button>
 
                        
                         
@@ -95,8 +95,8 @@ var Module = React.createClass({
                     {/*May not need Promise component. This Promise info is in the ModuleNavigator componenet.
                     <Promise />*/}
                     <div className="conceptWrapper" style={{display:"none"}}>
-                        <ConceptNavigator concepts={this.props.data.Topic} initialConcept={0}/> {/*initialConcept won't always be 0; user may want to pick up where they left off*/}
-                        <Challenge data={this.props.data} />
+                        <ConceptNavigator data={this.props.data} concepts={this.props.data.Topic} initialConcept={0}/> {/*initialConcept won't always be 0; user may want to pick up where they left off*/}
+                        {/*<Challenge data={this.props.data} />*/}
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 var React = require("react");
 var ConceptPage = require("./ConceptPage.jsx");
+var Challenge = require("./Challenge.jsx");
 
 /*requires for react-bootstrap components*/
 var Button = require("react-bootstrap/lib/Button");
@@ -81,9 +82,9 @@ var ConceptNavigator = React.createClass({
         
         var challengeButtonDupl = {
             
-            background: "white",
+            background: "#0BA6E0",
             padding: "12px 22px",
-            border: "2px solid #E6E7E8",
+            border: "none !important",
             color: "#CCCCCC",
             margin: "20px 0px 20px 15px",
             borderRadius: "0",
@@ -107,8 +108,7 @@ var ConceptNavigator = React.createClass({
            borderTop: "2px solid #E6E7E8"
        };
         
-        
-        
+      
        return (
            
             {/*
@@ -126,10 +126,10 @@ var ConceptNavigator = React.createClass({
               <div style={conceptBox}>
                {ConceptNodes}
                     <div style={buttonBar}>
-                    <button type="button" style={challengeButtonDupl} className="btn btn-primary" onClick={this.togglePrev} disabled = {!this.state.prevEnabled} role="button">Prev</button>
-                    <button type="button" style={challengeButtonDupl} className="btn btn-primary" onClick={this.toggleNext} disabled = {!this.state.nextEnabled} role="button">Next</button>
-                    <button type="button" style={challengeButtonDupl} className="btn btn-primary backToModules" onClick={this.toggleNext} role="button">Back to Modules</button>
-                    <ModalPop />
+                    <button type="button" style={challengeButtonDupl} className="btn btn-primary prevBtnStyle" onClick={this.togglePrev} disabled = {!this.state.prevEnabled} role="button">Prev</button>
+                    <button type="button" style={challengeButtonDupl} className="btn btn-primary nextBtnStyle" onClick={this.toggleNext} disabled = {!this.state.nextEnabled} role="button">Next</button>
+                    <button type="button" style={challengeButtonDupl} className="btn btn-primary backToModules bkModuleBtnStyle" onClick={this.toggleNext} role="button">Back to Modules</button>
+                    <ModalPop data={this.props.data} />
                     </div>
                     </div>      
              
@@ -224,30 +224,26 @@ var ModalPop = React.createClass({
     
 
         <Modal show={this.state.showModal} onHide={this.close}>
-          <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Header style={{background:"#0D4C85"}} closeButton>
+            <Modal.Title></Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            <h4>Text in a modal</h4>
-            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+          <Modal.Body style={{fontFamily:"Century Gothic, sans-serif"}}>
+            <Challenge data={this.props.data} />
+            
 
+{/*
             <h4>Popover in a modal</h4>
             <p>there is a <OverlayTrigger overlay={popover}><a href="#">popover</a></OverlayTrigger> here</p>
 
             <h4>Tooltips in a modal</h4>
             <p>there is a <OverlayTrigger overlay={tooltip}><a href="#">tooltip</a></OverlayTrigger> here</p>
+            
+            */}
 
-            <hr />
-
-            <h4>Overflowing text to show scroll behavior</h4>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
-            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-            <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-            <p>Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.</p>
             
           </Modal.Body>
-          <Modal.Footer>
-            <Button type="button" onClick={this.close} role="button">Close</Button>
+          <Modal.Footer style={{background:"#fff"}}>
+            <Button style={{background:"#0BA6E0",color:"#fff"}} type="button" onClick={this.close} role="button">Close</Button>
           </Modal.Footer>
         </Modal>
       </div>
