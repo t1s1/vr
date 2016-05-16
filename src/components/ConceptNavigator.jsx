@@ -1,6 +1,7 @@
 var React = require("react");
 var ConceptPage = require("./ConceptPage.jsx");
 var Challenge = require("./Challenge.jsx");
+var LabPlayer = require("./LabPlayer.jsx");
 
 /*requires for react-bootstrap components*/
 var Button = require("react-bootstrap/lib/Button");
@@ -102,10 +103,10 @@ var ConceptNavigator = React.createClass({
        
        var buttonBar = {
            position:"fixed",
-           bottom:"0",
-           background: "#ffffff",
-           width: "100%",
-           borderTop: "2px solid #E6E7E8"
+           bottom:"0px",
+           background: "#fff",
+           width: "100%"
+           
        };
         
       
@@ -125,13 +126,15 @@ var ConceptNavigator = React.createClass({
              
               <div style={conceptBox}>
                {ConceptNodes}
-                    <div style={buttonBar}>
-                    <button type="button" style={challengeButtonDupl} className="btn btn-primary prevBtnStyle" onClick={this.togglePrev} disabled = {!this.state.prevEnabled} role="button">Prev</button>
-                    <button type="button" style={challengeButtonDupl} className="btn btn-primary nextBtnStyle" onClick={this.toggleNext} disabled = {!this.state.nextEnabled} role="button">Next</button>
-                    <button type="button" style={challengeButtonDupl} className="btn btn-primary backToModules bkModuleBtnStyle" onClick={this.toggleNext} role="button">Back to Modules</button>
-                    <ModalPop data={this.props.data} />
+                    <div className="row" style={buttonBar}>
+                        <div className="col-sm-12">
+                            <button type="button" style={challengeButtonDupl} className="btn btn-primary prevBtnStyle" onClick={this.togglePrev} disabled = {!this.state.prevEnabled} role="button">Prev</button>
+                            <button type="button" style={challengeButtonDupl} className="btn btn-primary nextBtnStyle" onClick={this.toggleNext} disabled = {!this.state.nextEnabled} role="button">Next</button>
+                            <button type="button" style={challengeButtonDupl} className="btn btn-primary backToModules bkModuleBtnStyle" onClick={this.toggleNext} role="button">Back to Modules</button>
+                            <ModalPop data={this.props.data} />
+                        </div>
                     </div>
-                    </div>      
+              </div>      
              
            
         );
@@ -219,34 +222,45 @@ var ModalPop = React.createClass({
         
         
         <Button type="button" className="btnOverRides" bsStyle="primary" bsSize="large" role="button" onClick={this.open}>
-          Challenge
+          Take The Challenge
         </Button>
     
-
+        
         <Modal show={this.state.showModal} onHide={this.close}>
+      
           <Modal.Header style={{background:"#0D4C85"}} closeButton>
             <Modal.Title></Modal.Title>
           </Modal.Header>
           <Modal.Body style={{fontFamily:"Century Gothic, sans-serif"}}>
-            <Challenge data={this.props.data} />
-            
+            <div className="row">
+                <div className="col-md-4">
+                    <Challenge data={this.props.data} />
+                    
+        
+        {/*
+                    <h4>Popover in a modal</h4>
+                    <p>there is a <OverlayTrigger overlay={popover}><a href="#">popover</a></OverlayTrigger> here</p>
+        
+                    <h4>Tooltips in a modal</h4>
+                    <p>there is a <OverlayTrigger overlay={tooltip}><a href="#">tooltip</a></OverlayTrigger> here</p>
+                    
+                    */}
+                </div>{/*end of body left*/}
+                <div className="col-md-8 remove-pad-left">
+                     <LabPlayer />
+                </div>
 
-{/*
-            <h4>Popover in a modal</h4>
-            <p>there is a <OverlayTrigger overlay={popover}><a href="#">popover</a></OverlayTrigger> here</p>
-
-            <h4>Tooltips in a modal</h4>
-            <p>there is a <OverlayTrigger overlay={tooltip}><a href="#">tooltip</a></OverlayTrigger> here</p>
-            
-            */}
-
-            
+            </div>{/*end of nested row*/}
           </Modal.Body>
           <Modal.Footer style={{background:"#fff"}}>
             <Button style={{background:"#0BA6E0",color:"#fff"}} type="button" onClick={this.close} role="button">Close</Button>
           </Modal.Footer>
+      
         </Modal>
-      </div>
+        
+       
+        
+      </div>/*modal container*/
     );
   }
 });

@@ -114,14 +114,21 @@ var Video = React.createClass({
         };
         
         return (
-           <div style={{width:'100%'}} className="noPad">
-                <iframe style={{margin:'0 auto', marginTop: '10px', display:'block'}} src={this.props.video} allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" align="middle" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="620" height="349"></iframe>
+           <div style={{width:"100%"}} className="responsive-video">
+                <iframe className="subtle-shadow" style={{margin:'0 auto', display:'block', border:'none'}} src={this.props.video} allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" align="middle" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="620" height="349"></iframe>
 <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
                 {/*<iframe style={playerStyle}  src={this.props.video} frameborder="0" allowfullscreen></iframe>*/}
            </div>
         );
     }
 });
+
+
+
+
+
+
+
 
 var Text = React.createClass({
      render: function () {

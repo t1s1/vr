@@ -77,15 +77,12 @@ h5{
     
     
 /*End matching styles */    
-    
 
- /*removes border from youtube video*/
-iframe{
-        position:relative;
-        border:none !important;
-      
-    }
-    
+
+
+/*=====JONATHAN CARROLL========*/    
+
+/*==============ALTER SET BOOTSTRAP PADDING AND MARGIN FROM ROWS===============*/  
 .noPad{
       padding:0 !important;
       margin:0 !important;
@@ -124,7 +121,7 @@ iframe{
 
 
  
-/*-----------MEDIA QUERIES FOR OVERALY TEXT MODULE.JSX-------------*/
+/*====================MEDIA QUERIES FOR OVERLAY TEXT MODULE.JSX==================*/
 
 
 @media (max-width:1000px) {
@@ -145,6 +142,29 @@ iframe{
    }
     
     
+
+  
+  
+    .responsive-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 60px; 
+        /*overflow: hidden;*/
+        margin-left: 13% !important;
+        
+   }
+
+
+    .responsive-video iframe,
+    .responsive-video object,
+    .responsive-video embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 75% !important;
+        height: 75% !important;
+   }
+    
 }
 
 
@@ -160,6 +180,32 @@ iframe{
    .overlayTitle{
        font-size:25px !important;
    }
+   
+   
+   
+   
+   
+   
+   .responsive-video {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 60px; 
+        /*overflow: hidden;*/
+        margin-left: 5% !important;
+       
+        
+   }
+
+
+    .responsive-video iframe,
+    .responsive-video object,
+    .responsive-video embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 90% !important;
+        height: 90% !important;
+    }
     
     
 }
@@ -167,7 +213,7 @@ iframe{
 
  
  
-/*--------- NAVIGATION BUTTON OVERRIDES-------------*/
+/*================== NAVIGATION BUTTON OVERRIDES=================*/
 
 .btnOverRides{
     padding:12px 22px !important;
@@ -224,3 +270,128 @@ iframe{
 }
 
 
+
+
+/*==================RESPONSIVE VIDEO==============*/
+
+
+
+.responsive-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 60px; overflow: hidden;
+    margin-left: 23%;
+
+}
+
+
+.responsive-video iframe,
+.responsive-video object,
+.responsive-video embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55%;
+    height: 55%;
+}
+
+
+
+/*=================RESPONSIVE IFRAME===============*/
+
+
+
+.responsive-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 60px; overflow: hidden;
+    width:75%;
+    height:75%;
+    margin:0 auto;
+
+}
+
+
+.responsive-iframe iframe,
+.responsive-iframe object,
+.responsive-iframe embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+}
+
+
+
+
+.subtle-shadow{
+    
+  -webkit-box-shadow: 0px 2px 5px -1px rgba(0,0,0,0.37) !important;
+  -moz-box-shadow: 0px 2px 5px -1px rgba(0,0,0,0.37) !important;
+  box-shadow: 0px 2px 5px -1px rgba(0,0,0,0.37) !important;
+}
+
+
+
+
+
+
+
+
+
+.responsive-iframe-lab{
+    
+    height:600px !important;
+  
+}
+
+
+.myLab{
+    border:none !important;   
+}
+
+
+
+
+.modal-body{
+    
+    padding:19px 0 0 15px !important;
+    
+}
+
+
+.remove-pad-left{
+    padding-left:0 !important;
+    margin-top:-20px !important;
+}
+
+
+
+/*
+
+@media (max-width:1000px) {
+ 
+ .modal-content{
+     
+     
+ }
+    
+    
+}
+
+*/
+
+
+@media (min-width: 768px){
+.modal-content {
+    width:1250px !important;
+    margin-left:-320px !important;
+    
+    
+    
+}
+
+
+
+}

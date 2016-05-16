@@ -79,7 +79,7 @@ var ModuleNavigator = React.createClass({
                      {ModuleNodes}
                     <div className="controls pull-right control-wrapper moduleButtons">
                         
-                        <button style = {challengeButton} type="button" className="btn btn-primary pu" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</button>
+                        <button style = {challengeButton} type="button" className="btn btn-primary" onClick={this.togglePrev} disabled = {!this.state.prevEnabled}>Prev</button>
                         <button style = {challengeButton} type="button" className="btn btn-primary" onClick={this.toggleNext} disabled = {!this.state.nextEnabled}>Next</button>
                     </div>
                    
